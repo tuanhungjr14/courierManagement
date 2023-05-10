@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author khoatd
- *
- */
-module projectChuyenPhatNhanh {
-}
