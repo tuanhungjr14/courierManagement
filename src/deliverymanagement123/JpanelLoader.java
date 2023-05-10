@@ -28,5 +28,9 @@ public class JpanelLoader {
         System.gc();
     
     }
+
+    void jPanelLoader(JPanel panel_load, homeMain hm) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
    
 }

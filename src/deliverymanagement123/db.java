@@ -21,6 +21,7 @@ public class db {
             con = DriverManager.getConnection("jdbc:mysql://localhost/delivery_management","root","");
             return con;
         } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e);
             return null;
         }
     }
