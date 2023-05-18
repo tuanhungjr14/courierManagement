@@ -17,9 +17,10 @@ public class AdminDashboard extends javax.swing.JFrame {
     /**
      * Creates new form AdminDashboard
      */
-      Color selectionColor = new Color(34,48,62);
-    Color sideColor = new Color(64,194,150);
-    Color textSelectionColor = new Color(255,255,255);
+    Color selectionColor = new Color(34, 48, 62);
+    Color sideColor = new Color(64, 194, 150);
+    Color textSelectionColor = new Color(255, 255, 255);
+
     public AdminDashboard() {
         initComponents();
     }
@@ -75,6 +76,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel15.setBackground(new java.awt.Color(0, 153, 0));
         jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,11 +84,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel16.setBackground(new java.awt.Color(255, 153, 0));
 
         jLabel19.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/AzDeli (1).png"))); // NOI18N
         jLabel19.setText("AZ COURIER SERVICE");
 
         jLabel20.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png"))); // NOI18N
         jLabel20.setText("Log out");
         jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -124,7 +124,6 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jLabel17.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboard.png"))); // NOI18N
         jLabel17.setText("Dashboard");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -152,6 +151,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 120, 138));
         jLabel1.setText("Acount");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 140, 30));
 
         jPanel3.setBackground(new java.awt.Color(42, 58, 73));
@@ -199,6 +203,11 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jPanel17.setBackground(new java.awt.Color(42, 58, 73));
         jPanel17.setForeground(new java.awt.Color(42, 58, 73));
+        jPanel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel17MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -292,6 +301,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel27.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(102, 120, 138));
         jLabel27.setText("Cancelled Order");
+        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel27MouseClicked(evt);
+            }
+        });
         jPanel22.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 140, 30));
 
         jPanel23.setBackground(new java.awt.Color(42, 58, 73));
@@ -324,6 +338,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel30.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(102, 120, 138));
         jLabel30.setText("Completed Order");
+        jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel30MouseClicked(evt);
+            }
+        });
         jPanel24.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 140, 30));
 
         jPanel25.setBackground(new java.awt.Color(42, 58, 73));
@@ -397,25 +416,20 @@ public class AdminDashboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel20jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20jLabel4MouseClicked
-        int a = JOptionPane.showConfirmDialog(this, "Do you want to log out ?", "Log out", JOptionPane.YES_NO_OPTION);
-        if (a == 0) {
-            new Login().setVisible(true);
-            this.dispose();
-        }
-    }//GEN-LAST:event_jLabel20jLabel4MouseClicked
-
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-        //        jPanel13.setBackground(selectionColor);
-        //       jPanel17.setBackground(sideColor);
-        //       jLabel13.setForeground(textSelectionColor);
-        //       jLabel14.setVisible(true);
-        //       jLabel33.setVisible(false);
-        //       TrackOrder delivery = new TrackOrder();
-        //       delivery.setVisible(true);
-        //       delivery.pack();
+      
+
+        jPanel20.setBackground(selectionColor);
+        jPanel21.setBackground(sideColor);
+        jLabel22.setForeground(textSelectionColor);
+        jLabel25.setVisible(true);
+        jLabel26.setVisible(false);
+        TrackOdrAdmin track = new TrackOdrAdmin();
+        track.setVisible(true);
+        track.pack();
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jPanel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseClicked
@@ -432,6 +446,51 @@ public class AdminDashboard extends javax.swing.JFrame {
         employees.setVisible(true);
         employees.pack();
     }//GEN-LAST:event_jLabel22MouseClicked
+
+    private void jLabel20jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20jLabel4MouseClicked
+        int a = JOptionPane.showConfirmDialog(this, "Do you want to log out ?", "Log out", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            new Login().setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jLabel20jLabel4MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        jPanel20.setBackground(selectionColor);
+        jPanel21.setBackground(sideColor);
+        jLabel22.setForeground(textSelectionColor);
+        jLabel25.setVisible(true);
+        jLabel26.setVisible(false);
+        Account acc = new Account();
+        acc.setVisible(true);
+        acc.pack();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
+        jPanel20.setBackground(selectionColor);
+        jPanel21.setBackground(sideColor);
+        jLabel22.setForeground(textSelectionColor);
+        jLabel25.setVisible(true);
+        jLabel26.setVisible(false);
+        Cancelledord cancelled = new Cancelledord();
+        cancelled.setVisible(true);
+        cancelled.pack();
+    }//GEN-LAST:event_jLabel27MouseClicked
+
+    private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
+        jPanel20.setBackground(selectionColor);
+        jPanel21.setBackground(sideColor);
+        jLabel22.setForeground(textSelectionColor);
+        jLabel25.setVisible(true);
+        jLabel26.setVisible(false);
+        Completedord completed = new Completedord();
+        completed.setVisible(true);
+        completed.pack();
+    }//GEN-LAST:event_jLabel30MouseClicked
+
+    private void jPanel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel17MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel17MouseClicked
 
     /**
      * @param args the command line arguments
@@ -469,28 +528,28 @@ public class AdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel13;
     public static javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
+    public static javax.swing.JLabel jLabel15;
+    public static javax.swing.JLabel jLabel16;
+    public static javax.swing.JLabel jLabel17;
+    public static javax.swing.JLabel jLabel18;
+    public static javax.swing.JLabel jLabel19;
+    public static javax.swing.JLabel jLabel2;
+    public static javax.swing.JLabel jLabel20;
+    public static javax.swing.JLabel jLabel21;
     public static javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
+    public static javax.swing.JLabel jLabel23;
+    public static javax.swing.JLabel jLabel24;
     public static javax.swing.JLabel jLabel25;
     public static javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
+    public static javax.swing.JLabel jLabel27;
+    public static javax.swing.JLabel jLabel28;
+    public static javax.swing.JLabel jLabel29;
+    public static javax.swing.JLabel jLabel30;
+    public static javax.swing.JLabel jLabel31;
+    public static javax.swing.JLabel jLabel32;
     public static javax.swing.JLabel jLabel33;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JPanel jPanel13;
