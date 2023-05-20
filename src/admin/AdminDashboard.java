@@ -420,13 +420,12 @@ public class AdminDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-      
 
-        jPanel20.setBackground(selectionColor);
-        jPanel21.setBackground(sideColor);
-        jLabel22.setForeground(textSelectionColor);
-        jLabel25.setVisible(true);
-        jLabel26.setVisible(false);
+        jPanel13.setBackground(selectionColor);
+        jPanel17.setBackground(sideColor);
+        jLabel13.setForeground(textSelectionColor);
+        jLabel33.setVisible(true);
+        jLabel14.setVisible(false);
         TrackOdrAdmin track = new TrackOdrAdmin();
         track.setVisible(true);
         track.pack();
@@ -450,39 +449,39 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void jLabel20jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20jLabel4MouseClicked
         int a = JOptionPane.showConfirmDialog(this, "Do you want to log out ?", "Log out", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
-            new Login().setVisible(true);
+            new Account().setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_jLabel20jLabel4MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        jPanel20.setBackground(selectionColor);
-        jPanel21.setBackground(sideColor);
-        jLabel22.setForeground(textSelectionColor);
-        jLabel25.setVisible(true);
-        jLabel26.setVisible(false);
+        jPanel1.setBackground(selectionColor);
+        jPanel3.setBackground(sideColor);
+        jLabel1.setForeground(textSelectionColor);
+        jLabel15.setVisible(true);
+        jLabel2.setVisible(false);
         Account acc = new Account();
         acc.setVisible(true);
         acc.pack();
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
-        jPanel20.setBackground(selectionColor);
-        jPanel21.setBackground(sideColor);
-        jLabel22.setForeground(textSelectionColor);
-        jLabel25.setVisible(true);
-        jLabel26.setVisible(false);
+        jPanel22.setBackground(selectionColor);
+        jPanel23.setBackground(sideColor);
+        jLabel27.setForeground(textSelectionColor);
+        jLabel29.setVisible(true);
+        jLabel28.setVisible(false);
         Cancelledord cancelled = new Cancelledord();
         cancelled.setVisible(true);
         cancelled.pack();
     }//GEN-LAST:event_jLabel27MouseClicked
 
     private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
-        jPanel20.setBackground(selectionColor);
-        jPanel21.setBackground(sideColor);
-        jLabel22.setForeground(textSelectionColor);
-        jLabel25.setVisible(true);
-        jLabel26.setVisible(false);
+        jPanel24.setBackground(selectionColor);
+        jPanel25.setBackground(sideColor);
+        jLabel30.setForeground(textSelectionColor);
+        jLabel32.setVisible(true);
+        jLabel31.setVisible(false);
         Completedord completed = new Completedord();
         completed.setVisible(true);
         completed.pack();
@@ -561,8 +560,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel19;
     public static javax.swing.JPanel jPanel20;
     public static javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel23;
+    public static javax.swing.JPanel jPanel22;
+    public static javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel3;

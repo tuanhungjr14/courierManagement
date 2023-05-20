@@ -18,9 +18,10 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     /**
      * Creates new form EmployeeDashboard
      */
-    Color selectionColor = new Color(34,48,62);
-    Color sideColor = new Color(64,194,150);
-    Color textSelectionColor = new Color(255,255,255);
+    Color selectionColor = new Color(34, 48, 62);
+    Color sideColor = new Color(64, 194, 150);
+    Color textSelectionColor = new Color(255, 255, 255);
+
     public EmployeeDashboard() {
         initComponents();
     }
@@ -149,11 +150,21 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 55, 270, -1));
 
         jPanel1.setBackground(new java.awt.Color(42, 58, 73));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 120, 138));
         jLabel1.setText("Acount");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 140, 30));
 
         jPanel3.setBackground(new java.awt.Color(42, 58, 73));
@@ -294,6 +305,11 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jLabel27.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(102, 120, 138));
         jLabel27.setText("Peding Orders");
+        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel27MouseClicked(evt);
+            }
+        });
         jPanel22.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 140, 30));
 
         jPanel23.setBackground(new java.awt.Color(42, 58, 73));
@@ -326,6 +342,11 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jLabel30.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(102, 120, 138));
         jLabel30.setText("Take More Orders");
+        jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel30MouseClicked(evt);
+            }
+        });
         jPanel24.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 140, 30));
 
         jPanel25.setBackground(new java.awt.Color(42, 58, 73));
@@ -422,6 +443,14 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         //       TrackOrder delivery = new TrackOrder();
         //       delivery.setVisible(true);
         //       delivery.pack();
+        jPanel13.setBackground(selectionColor);
+        jPanel17.setBackground(sideColor);
+        jLabel13.setForeground(textSelectionColor);
+        jLabel33.setVisible(true);
+        jLabel14.setVisible(false);
+        TrackOdrEmployee trackord = new TrackOdrEmployee();
+        trackord.setVisible(true);
+        trackord.pack();
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jPanel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel13MouseClicked
@@ -434,10 +463,48 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jLabel22.setForeground(textSelectionColor);
         jLabel25.setVisible(true);
         jLabel26.setVisible(false);
-        TrackOrder trackOrder = new TrackOrder();
-        trackOrder.setVisible(true);
-        trackOrder.pack();
+        Completedordee completedee = new Completedordee();
+        completedee.setVisible(true);
+        completedee.pack();
     }//GEN-LAST:event_jLabel22MouseClicked
+
+    private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
+
+        jPanel24.setBackground(selectionColor);
+        jPanel25.setBackground(sideColor);
+        jLabel30.setForeground(textSelectionColor);
+        jLabel31.setVisible(true);
+        jLabel32.setVisible(false);
+        TakeMoreOdr takemore = new TakeMoreOdr();
+        takemore.setVisible(true);
+        takemore.pack();
+    }//GEN-LAST:event_jLabel30MouseClicked
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
+        jPanel22.setBackground(selectionColor);
+        jPanel23.setBackground(sideColor);
+        jLabel27.setForeground(textSelectionColor);
+        jLabel28.setVisible(true);
+        jLabel29.setVisible(false);
+        Pendingodrs pending = new Pendingodrs();
+        pending.setVisible(true);
+        pending.pack();
+    }//GEN-LAST:event_jLabel27MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        jPanel1.setBackground(selectionColor);
+        jPanel3.setBackground(sideColor);
+        jLabel1.setForeground(textSelectionColor);
+        jLabel2.setVisible(true);
+        jLabel15.setVisible(false);
+        Accountee acctee = new Accountee();
+        acctee.setVisible(true);
+        acctee.pack();
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments

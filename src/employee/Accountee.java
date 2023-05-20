@@ -2,18 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package user;
+package employee;
 
-/**
- *
- * @author tuan1
- */
-public class Login extends javax.swing.JFrame {
+import admin.*;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import user.ForgotPasswords;
+import user.Login;
 
-    /**
-     * Creates new form Login
-     */
-    public Login() {
+public class Accountee extends javax.swing.JFrame {
+
+    Color textPrimaryColor = new Color(102, 120, 138);
+    Color primaryColor = new Color(42, 58, 73);
+
+    public Accountee() {
         initComponents();
     }
 
@@ -165,15 +167,16 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
-        
+
     }//GEN-LAST:event_jPanel3MouseClicked
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-      ForgotPasswords forgotps = new ForgotPasswords();
+        ForgotPasswords forgotps = new ForgotPasswords();
         forgotps.setVisible(true);
         forgotps.pack();
+
     }//GEN-LAST:event_jLabel12MouseClicked
- 
+
     /**
      * @param args the command line arguments
      */
@@ -191,20 +194,21 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Accountee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Accountee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Accountee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Accountee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Accountee().setVisible(true);
             }
         });
     }
@@ -213,7 +217,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     public static javax.swing.JLabel jLabel10;
     public static final javax.swing.JLabel jLabel11 = new javax.swing.JLabel();
-    public static javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel12;
     public static javax.swing.JLabel jLabel14;
     public static javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel3;

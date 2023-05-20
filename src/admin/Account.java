@@ -5,6 +5,8 @@
 package admin;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import user.Login;
 
 public class Account extends javax.swing.JFrame {
 
@@ -112,6 +114,11 @@ public class Account extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Forgot password?");
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 521, 152, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -161,6 +168,11 @@ public class Account extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jPanel3MouseClicked
 
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+
+
+    }//GEN-LAST:event_jLabel12MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -200,7 +212,7 @@ public class Account extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     public static javax.swing.JLabel jLabel10;
     public static final javax.swing.JLabel jLabel11 = new javax.swing.JLabel();
-    public static javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel12;
     public static javax.swing.JLabel jLabel14;
     public static javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel3;

@@ -276,11 +276,6 @@ public class Employees extends javax.swing.JFrame {
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         setVisible(false);
-        AdminDashboard.jPanel20.setBackground(primaryColor);
-        AdminDashboard.jPanel21.setBackground(primaryColor);
-        AdminDashboard.jLabel22.setForeground(textPrimaryColor);
-        AdminDashboard.jLabel25.setVisible(true);
-        AdminDashboard.jLabel26.setVisible(false);
     }//GEN-LAST:event_jLabel14MouseClicked
 
     /**
