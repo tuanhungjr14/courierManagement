@@ -1,15 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package user;
 
-import static admin.AdminDashboard.jLabel22;
-import static admin.AdminDashboard.jLabel25;
-import static admin.AdminDashboard.jLabel26;
-import static admin.AdminDashboard.jPanel20;
-import static admin.AdminDashboard.jPanel21;
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -65,6 +59,11 @@ public class Order extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 0));
 
@@ -332,11 +331,11 @@ public class Order extends javax.swing.JFrame {
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         setVisible(false);
-        jPanel20.setBackground(primaryColor);
-        jPanel21.setBackground(primaryColor);
-        jLabel22.setForeground(textPrimaryColor);
-        jLabel25.setVisible(true);
-        jLabel26.setVisible(false);
+        UserDashboard.jPanel20.setBackground(primaryColor);
+        UserDashboard.jPanel21.setBackground(primaryColor);
+        UserDashboard.jLabel22.setForeground(textPrimaryColor);
+        UserDashboard.jLabel25.setVisible(true);
+        UserDashboard.jLabel26.setVisible(false);
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -370,6 +369,19 @@ public class Order extends javax.swing.JFrame {
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        for(double i=0.1 ;i<1.0;i+=0.1){
+        String s=""+i;
+        float f= Float.parseFloat(s);
+        this.setOpacity(f);
+            try {
+                Thread.sleep(40);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

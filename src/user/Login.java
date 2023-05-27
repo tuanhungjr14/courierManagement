@@ -1,8 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package user;
+
+import admin.AdminDashboard;
+import connection.MyConnection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -13,8 +21,11 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    private ButtonGroup bg = new ButtonGroup();
+
     public Login() {
         initComponents();
+        init();
     }
 
     /**
@@ -42,6 +53,11 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 0));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -54,32 +70,37 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe Print", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Login");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 73, 130, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 130, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 153, 0));
         jButton1.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Login");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 439, 240, 36));
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 223, 382, -1));
-        jPanel3.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 306, 382, -1));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, 240, 36));
+        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 382, -1));
+        jPanel3.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 382, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Email");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 195, 72, -1));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 72, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Password");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 272, 72, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 72, -1));
 
         jRadioButton1.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton1.setText("Employee");
         jRadioButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 368, 98, -1));
+        jPanel3.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 98, -1));
 
         jRadioButton2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -90,25 +111,30 @@ public class Login extends javax.swing.JFrame {
                 jRadioButton2ActionPerformed(evt);
             }
         });
-        jPanel3.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 368, 72, -1));
+        jPanel3.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 72, -1));
 
         jRadioButton3.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton3.setText("Admin");
         jRadioButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 368, 76, -1));
+        jPanel3.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 76, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Sign up");
         jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 493, 152, -1));
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 500, 152, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Don't have an account?");
         jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 493, 152, -1));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 500, 152, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,7 +145,7 @@ public class Login extends javax.swing.JFrame {
                 jLabel12MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 521, 152, -1));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, 152, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -129,7 +155,7 @@ public class Login extends javax.swing.JFrame {
                 jLabel14MouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(597, 6, 37, -1));
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 37, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,7 +181,28 @@ public class Login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+private void init() {
+        bg.add(jRadioButton1);
+        bg.add(jRadioButton2);
+        bg.add(jRadioButton3);
+        jRadioButton1.setSelected(true);
+    }
 
+    private boolean isEmpty() {
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Email is required", "Warning", 2);
+            return false;
+        }
+        if (!jTextField1.getText().matches("^.+@.+\\..+$")) {
+            JOptionPane.showMessageDialog(this, "Valid email address", "Warning", 2);
+            return false;
+        }
+        if (String.valueOf(jPasswordField1.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Password email address", "Warning", 2);
+            return false;
+        }
+        return true;
+    }
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
@@ -165,15 +212,79 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
-        
+
     }//GEN-LAST:event_jPanel3MouseClicked
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-      ForgotPasswords forgotps = new ForgotPasswords();
-        forgotps.setVisible(true);
-        forgotps.pack();
+        new ForgotPasswords().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jLabel12MouseClicked
- 
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        for (double i = 0.1; i < 1.0; i += 0.1) {
+            String s = "" + i;
+            float f = Float.parseFloat(s);
+            this.setOpacity(f);
+            try {
+                Thread.sleep(40);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        new SignUp().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (isEmpty()) {
+            String email = jTextField1.getText();
+            String password = String.valueOf(jPasswordField1.getPassword());
+            if (jRadioButton1.isSelected()) {
+
+                try {
+                    PreparedStatement ps;
+                    Connection con = MyConnection.getConnetion();
+                    ps = con.prepareStatement("select * from admin where email =? and password =?");
+                    ps.setString(1, email);
+                    ps.setString(2, password);
+                    ResultSet rs = ps.executeQuery();
+                    if (rs.next()) {
+                        UserDashboard ud = new UserDashboard();
+                        ud.setVisible(true);
+                        ud.pack();
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Incorrect email or password", "Login Failed", 2);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (jRadioButton2.isSelected()) {
+                try {
+                    PreparedStatement ps;
+                    Connection con = MyConnection.getConnetion();
+                    ps = con.prepareStatement("select * from user where email =? and password =?");
+                    ps.setString(1, email);
+                    ps.setString(2, password);
+                    ResultSet rs = ps.executeQuery();
+                    if (rs.next()) {
+                        AdminDashboard ad = new AdminDashboard();
+                        ad.setVisible(true);
+                        ad.pack();
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Incorrect email or password", "Login Failed", 2);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */

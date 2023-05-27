@@ -1,10 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package admin;
 
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import user.Login;
 
@@ -20,7 +19,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     Color selectionColor = new Color(34, 48, 62);
     Color sideColor = new Color(64, 194, 150);
     Color textSelectionColor = new Color(255, 255, 255);
-
+    int xx,xy;
     public AdminDashboard() {
         initComponents();
     }
@@ -38,6 +37,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel16 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -77,14 +77,34 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel15.setBackground(new java.awt.Color(0, 153, 0));
         jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel16.setBackground(new java.awt.Color(255, 153, 0));
+        jPanel16.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel16MouseDragged(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jLabel19.setText("AZ COURIER SERVICE");
+        jLabel19.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel19MouseDragged(evt);
+            }
+        });
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel19MousePressed(evt);
+            }
+        });
 
         jLabel20.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
         jLabel20.setText("Log out");
@@ -94,6 +114,9 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel3.setText("admin@gmail.com");
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -101,7 +124,9 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 822, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 574, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110)
                 .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -110,7 +135,8 @@ public class AdminDashboard extends javax.swing.JFrame {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20))
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel3))
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
@@ -449,20 +475,13 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void jLabel20jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20jLabel4MouseClicked
         int a = JOptionPane.showConfirmDialog(this, "Do you want to log out ?", "Log out", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
-            new Account().setVisible(true);
+            new Login().setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_jLabel20jLabel4MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        jPanel1.setBackground(selectionColor);
-        jPanel3.setBackground(sideColor);
-        jLabel1.setForeground(textSelectionColor);
-        jLabel15.setVisible(true);
-        jLabel2.setVisible(false);
-        Account acc = new Account();
-        acc.setVisible(true);
-        acc.pack();
+        
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
@@ -480,8 +499,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel24.setBackground(selectionColor);
         jPanel25.setBackground(sideColor);
         jLabel30.setForeground(textSelectionColor);
-        jLabel32.setVisible(true);
-        jLabel31.setVisible(false);
+        jLabel31.setVisible(true);
+        jLabel32.setVisible(false);
         Completedord completed = new Completedord();
         completed.setVisible(true);
         completed.pack();
@@ -490,6 +509,36 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void jPanel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel17MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel17MouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        for(double i=0.1 ;i<1.0;i+=0.1){
+        String s=""+i;
+        float f= Float.parseFloat(s);
+        this.setOpacity(f);
+            try {
+                Thread.sleep(40);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jLabel19MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseDragged
+         int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx,y - xy);
+    }//GEN-LAST:event_jLabel19MouseDragged
+
+    private void jLabel19MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MousePressed
+         xx=evt.getX();
+        xy=evt.getY();
+    }//GEN-LAST:event_jLabel19MousePressed
+
+    private void jPanel16MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel16MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx,y - xy);
+    }//GEN-LAST:event_jPanel16MouseDragged
 
     /**
      * @param args the command line arguments
@@ -546,6 +595,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     public static javax.swing.JLabel jLabel27;
     public static javax.swing.JLabel jLabel28;
     public static javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     public static javax.swing.JLabel jLabel30;
     public static javax.swing.JLabel jLabel31;
     public static javax.swing.JLabel jLabel32;
@@ -562,8 +612,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     public static javax.swing.JPanel jPanel21;
     public static javax.swing.JPanel jPanel22;
     public static javax.swing.JPanel jPanel23;
-    private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel25;
+    public static javax.swing.JPanel jPanel24;
+    public static javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;

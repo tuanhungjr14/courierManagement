@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package employee;
 
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import user.Login;
-import user.TrackOrder;
+
 
 /**
  *
@@ -39,6 +38,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jPanel16 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -78,6 +78,11 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel15.setBackground(new java.awt.Color(0, 153, 0));
         jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -95,6 +100,9 @@ public class EmployeeDashboard extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel3.setText("employee@gmail.com");
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -102,7 +110,9 @@ public class EmployeeDashboard extends javax.swing.JFrame {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 816, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 557, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101)
                 .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -113,7 +123,9 @@ public class EmployeeDashboard extends javax.swing.JFrame {
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel20)
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel3))
                         .addGap(31, 31, 31)))
                 .addGap(0, 4, Short.MAX_VALUE))
         );
@@ -412,10 +424,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(352, 352, 352))
+            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,14 +444,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel20jLabel4MouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-        //        jPanel13.setBackground(selectionColor);
-        //       jPanel17.setBackground(sideColor);
-        //       jLabel13.setForeground(textSelectionColor);
-        //       jLabel14.setVisible(true);
-        //       jLabel33.setVisible(false);
-        //       TrackOrder delivery = new TrackOrder();
-        //       delivery.setVisible(true);
-        //       delivery.pack();
+
         jPanel13.setBackground(selectionColor);
         jPanel17.setBackground(sideColor);
         jLabel13.setForeground(textSelectionColor);
@@ -496,15 +498,21 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel27MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        jPanel1.setBackground(selectionColor);
-        jPanel3.setBackground(sideColor);
-        jLabel1.setForeground(textSelectionColor);
-        jLabel2.setVisible(true);
-        jLabel15.setVisible(false);
-        Accountee acctee = new Accountee();
-        acctee.setVisible(true);
-        acctee.pack();
+        
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       for(double i=0.1 ;i<1.0;i+=0.1){
+        String s=""+i;
+        float f= Float.parseFloat(s);
+        this.setOpacity(f);
+            try {
+                Thread.sleep(40);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -561,11 +569,12 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     public static javax.swing.JLabel jLabel27;
     public static javax.swing.JLabel jLabel28;
     public static javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     public static javax.swing.JLabel jLabel30;
     public static javax.swing.JLabel jLabel31;
     public static javax.swing.JLabel jLabel32;
     public static javax.swing.JLabel jLabel33;
-    private javax.swing.JPanel jPanel1;
+    public static javax.swing.JPanel jPanel1;
     public static javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     public static javax.swing.JPanel jPanel15;
@@ -575,11 +584,11 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel19;
     public static javax.swing.JPanel jPanel20;
     public static javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel23;
-    private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel25;
-    private javax.swing.JPanel jPanel3;
+    public static javax.swing.JPanel jPanel22;
+    public static javax.swing.JPanel jPanel23;
+    public static javax.swing.JPanel jPanel24;
+    public static javax.swing.JPanel jPanel25;
+    public static javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     // End of variables declaration//GEN-END:variables

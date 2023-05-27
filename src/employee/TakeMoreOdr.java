@@ -1,8 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package employee;
+
+import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import user.Login;
 
 /**
  *
@@ -13,6 +15,8 @@ public class TakeMoreOdr extends javax.swing.JFrame {
     /**
      * Creates new form TakeMoreOdr
      */
+    Color textPrimaryColor = new Color(102,120,138);
+    Color primaryColor = new Color(42,58,73);
     public TakeMoreOdr() {
         initComponents();
     }
@@ -44,6 +48,11 @@ public class TakeMoreOdr extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 0));
 
@@ -250,6 +259,11 @@ public class TakeMoreOdr extends javax.swing.JFrame {
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         setVisible(false);
+        EmployeeDashboard.jPanel24.setBackground(primaryColor);
+        EmployeeDashboard.jPanel25.setBackground(primaryColor);
+        EmployeeDashboard.jLabel30.setForeground(textPrimaryColor);
+        EmployeeDashboard.jLabel31.setVisible(true);
+        EmployeeDashboard.jLabel32.setVisible(false);
 
     }//GEN-LAST:event_jLabel14MouseClicked
 
@@ -260,6 +274,19 @@ public class TakeMoreOdr extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       for(double i=0.1 ;i<1.0;i+=0.1){
+        String s=""+i;
+        float f= Float.parseFloat(s);
+        this.setOpacity(f);
+            try {
+                Thread.sleep(40);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
