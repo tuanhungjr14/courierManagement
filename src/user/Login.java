@@ -3,6 +3,7 @@ package user;
 
 import admin.AdminDashboard;
 import connection.MyConnection;
+import employee.EmployeeDashboard;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
@@ -247,7 +248,26 @@ private void init() {
                 try {
                     PreparedStatement ps;
                     Connection con = MyConnection.getConnetion();
-                    ps = con.prepareStatement("select * from admin where email =? and password =?");
+                    ps = con.prepareStatement("select * from user where email =? and password =? and role_id='employee'");
+                    ps.setString(1, email);
+                    ps.setString(2, password);
+                    ResultSet rs = ps.executeQuery();
+                    if (rs.next()) {
+                        EmployeeDashboard ed = new EmployeeDashboard();
+                        ed.setVisible(true);
+                        ed.pack();
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Incorrect email or password", "Login Failed", 2);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else if (jRadioButton2.isSelected()) {
+                try {
+                    PreparedStatement ps;
+                    Connection con = MyConnection.getConnetion();
+                    ps = con.prepareStatement("select * from user where email =? and password =? and role_id ='user'");
                     ps.setString(1, email);
                     ps.setString(2, password);
                     ResultSet rs = ps.executeQuery();
@@ -262,11 +282,11 @@ private void init() {
                 } catch (SQLException ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else if (jRadioButton2.isSelected()) {
+            }  else if (jRadioButton3.isSelected()) {
                 try {
                     PreparedStatement ps;
                     Connection con = MyConnection.getConnetion();
-                    ps = con.prepareStatement("select * from user where email =? and password =?");
+                    ps = con.prepareStatement("select * from user where email =? and password =? and role_id ='admin'");
                     ps.setString(1, email);
                     ps.setString(2, password);
                     ResultSet rs = ps.executeQuery();

@@ -17,6 +17,8 @@ public class UserDashboard extends javax.swing.JFrame {
     Color selectionColor = new Color(34,48,62);
     Color sideColor = new Color(64,194,150);
     Color textSelectionColor = new Color(255,255,255);
+    int xx,xy;
+    
     public UserDashboard() {
         initComponents();
         init();
@@ -80,6 +82,16 @@ public class UserDashboard extends javax.swing.JFrame {
         jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel16.setBackground(new java.awt.Color(255, 153, 0));
+        jPanel16.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel16MouseDragged(evt);
+            }
+        });
+        jPanel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel16MousePressed(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jLabel19.setText("AZ COURIER SERVICE");
@@ -401,6 +413,17 @@ private void init(){
             this.dispose();
         }
     }//GEN-LAST:event_jLabel20jLabel4MouseClicked
+
+    private void jPanel16MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel16MousePressed
+        xx=evt.getX();
+        xy=evt.getY();
+    }//GEN-LAST:event_jPanel16MousePressed
+
+    private void jPanel16MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel16MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx,y - xy);
+    }//GEN-LAST:event_jPanel16MouseDragged
 
     /**
      * @param args the command line arguments

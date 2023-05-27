@@ -20,7 +20,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     Color selectionColor = new Color(34, 48, 62);
     Color sideColor = new Color(64, 194, 150);
     Color textSelectionColor = new Color(255, 255, 255);
-
+    int xx,xy;
     public EmployeeDashboard() {
         initComponents();
     }
