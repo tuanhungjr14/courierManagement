@@ -29,6 +29,6 @@ int row=0;
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return row;
+        return row+1;
     }
 }
