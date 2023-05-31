@@ -390,7 +390,9 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
-//        if(Character.isDigit(evt.getKeyChar()))
+        if(Character.isDigit(evt.getKeyChar())){
+        evt.comsume();
+        }
     }//GEN-LAST:event_jTextField5KeyTyped
 
     /**
