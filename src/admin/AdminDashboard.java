@@ -94,6 +94,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
 
         jLabel19.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/AzDeli (1).png"))); // NOI18N
         jLabel19.setText("AZ COURIER SERVICE");
         jLabel19.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {

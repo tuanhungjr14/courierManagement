@@ -1,6 +1,7 @@
 
 package user;
 
+import dao.UserDao;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,6 +14,7 @@ public class SignUp extends javax.swing.JFrame {
     /**
      * Creates new form SignUp
      */
+    UserDao user = new UserDao();
     public SignUp() {
         initComponents();
     }
