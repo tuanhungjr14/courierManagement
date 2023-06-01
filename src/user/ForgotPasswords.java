@@ -2,6 +2,7 @@ package user;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -191,6 +192,30 @@ public class ForgotPasswords extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private boolean isEmpty() {
+        if (jTextField3.getText().length() < 10) {
+            JOptionPane.showMessageDialog(this, "Phone is to short", "Warning", 2);
+            return false;
+        }
+        if (String.valueOf(jPasswordField1.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter new password", "Warning", 2);
+            return false;
+        }
+        return true;
+    }
+
+    private boolean emailValidation() {
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter your email address", "Warning", 2);
+            return false;
+        }
+        if (!jTextField1.getText().matches("^.+@.+\\..+$")) {
+            JOptionPane.showMessageDialog(this, "Phone is to short", "Warning", 2);
+            return false;
+        }
+        return true;
+    }
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
