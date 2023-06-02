@@ -1,5 +1,6 @@
 package user;
 
+import dao.ForgotPasswordDao;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -10,11 +11,18 @@ import javax.swing.JOptionPane;
  */
 public class ForgotPasswords extends javax.swing.JFrame {
 
+    ForgotPasswordDao fg = new ForgotPasswordDao();
+            
+            
+            
     int xx, xy;
+    Color notEdit = new Color(204, 204, 204);
+    Color edit = new Color(255, 255, 255);
 
     /**
      * Creates new form ForgotPasswordAdm
      */
+
     public ForgotPasswords() {
         initComponents();
     }
@@ -303,7 +311,7 @@ public class ForgotPasswords extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton jButton1;
     public static javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
+    public static javax.swing.JComboBox<String> jComboBox1;
     public static javax.swing.JLabel jLabel14;
     public static javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel3;
