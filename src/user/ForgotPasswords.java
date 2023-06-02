@@ -38,7 +38,7 @@ public class ForgotPasswords extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
@@ -79,22 +79,22 @@ public class ForgotPasswords extends javax.swing.JFrame {
         jLabel5.setText("Forgot Password");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 330, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 0));
-        jButton1.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Save");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSave.setBackground(new java.awt.Color(255, 153, 0));
+        btnSave.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
+        btnSave.setText("Save");
+        btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnSaveMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 510, 160, 36));
+        jPanel3.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 510, 160, 36));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,9 +193,19 @@ public class ForgotPasswords extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        if(isEmpty()){
+        String email = jTextField1.getText();
+        String ans = jTextField1.getText();
+        if(fg.getAns(email, ans)){
+            String pass = String.valueOf(jPasswordField1.getPassword());
+            fg.setPassword(email, pass);
+            new Login().setVisible(true);
+            this.dispose();
+        }
+        
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -225,9 +235,9 @@ public class ForgotPasswords extends javax.swing.JFrame {
         return true;
     }
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btnSaveMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         for (double i = 0.1; i < 1.0; i += 0.1) {
@@ -309,7 +319,7 @@ public class ForgotPasswords extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton jButton1;
+    public static javax.swing.JButton btnSave;
     public static javax.swing.JButton jButton3;
     public static javax.swing.JComboBox<String> jComboBox1;
     public static javax.swing.JLabel jLabel14;
