@@ -1,6 +1,7 @@
 package user;
 
 import dao.ForgotPasswordDao;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -48,7 +49,7 @@ public class ForgotPasswords extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -101,7 +102,7 @@ public class ForgotPasswords extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 382, -1));
+        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 382, -1));
         jPanel3.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 382, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -158,13 +159,12 @@ public class ForgotPasswords extends javax.swing.JFrame {
         });
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 160, 36));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 380, -1));
+        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 382, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -272,9 +272,9 @@ public class ForgotPasswords extends javax.swing.JFrame {
         this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel3MouseDragged
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,7 +321,6 @@ public class ForgotPasswords extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnSave;
     public static javax.swing.JButton jButton3;
-    public static javax.swing.JComboBox<String> jComboBox1;
     public static javax.swing.JLabel jLabel14;
     public static javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel3;
@@ -331,6 +330,7 @@ public class ForgotPasswords extends javax.swing.JFrame {
     public static javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
     public static javax.swing.JTextField jTextField1;
+    public static javax.swing.JTextField jTextField2;
     public static javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

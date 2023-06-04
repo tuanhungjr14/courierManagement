@@ -322,11 +322,11 @@ public class SignUp extends javax.swing.JFrame {
             return false;
         }
         if (jTextField5.getText().length()<10) {
-            JOptionPane.showMessageDialog(this, "Phone is to short", "Warning", 2);
+            JOptionPane.showMessageDialog(this, "Phone is too short", "Warning", 2);
             return false;
         }
         if (jTextField5.getText().length()>10) {
-            JOptionPane.showMessageDialog(this, "Phone is to long", "Warning", 2);
+            JOptionPane.showMessageDialog(this, "Phone is too long", "Warning", 2);
             return false;
         }
          if (jTextField8.getText().isEmpty()) {
@@ -361,6 +361,27 @@ public class SignUp extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if(isEmpty()){
+            String id = jTextField1.getText();
+            String username = jTextField2.getText();
+            String email =  jTextField4.getText();
+            String password = String.valueOf(jPasswordField1.getPassword());
+            String phone = jTextField5.getText();
+            String seq = jComboBox1.getSelectedItem().toString();
+            String ans = jTextField6.getText();
+            String address = jTextField8.getText();
+            
+            if(!user.isEmailExist(email)){
+            if(!user.isPhoneExist(phone)){
+                user.insert(id, username, email, password, phone,seq,ans, address);
+                new Login().setVisible(true);
+                this.dispose();
+            }else{
+            JOptionPane.showMessageDialog(this, "This email address exists","Warning",2);
+            }
+                
+            }else{
+            JOptionPane.showMessageDialog(this, "This email address exists","Warning",2);
+            }
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -390,8 +411,8 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
-        if(Character.isDigit(evt.getKeyChar())){
-        evt.comsume();
+        if(!Character.isDigit(evt.getKeyChar())){
+        evt.consume();
         }
     }//GEN-LAST:event_jTextField5KeyTyped
 

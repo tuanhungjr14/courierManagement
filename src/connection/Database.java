@@ -19,7 +19,7 @@ public class Database {
         String url = "jdbc:mysql://localhost:3306/"; // Đường dẫn kết nối tới máy chủ cơ sở dữ liệu
         String databaseName = "delivery_management"; // Tên cơ sở dữ liệu mới
         String username = "root"; // Tên người dùng
-        String password = "root"; // Mật khẩu
+        String password = ""; // Mật khẩu
 
         try (Connection connection = DriverManager.getConnection(url, username, password);
              Statement statement = connection.createStatement()) {
