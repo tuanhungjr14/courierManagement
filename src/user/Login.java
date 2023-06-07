@@ -1,4 +1,3 @@
-
 package user;
 
 import admin.AdminDashboard;
@@ -23,7 +22,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     private ButtonGroup bg = new ButtonGroup();
-
+    
     public Login() {
         initComponents();
         init();
@@ -188,7 +187,7 @@ private void init() {
         bg.add(jRadioButton3);
         jRadioButton1.setSelected(true);
     }
-
+    
     private boolean isEmpty() {
         if (jTextField1.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Email is required", "Warning", 2);
@@ -242,9 +241,10 @@ private void init() {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (isEmpty()) {
             String email = jTextField1.getText();
+            
             String password = String.valueOf(jPasswordField1.getPassword());
             if (jRadioButton1.isSelected()) {
-
+                
                 try {
                     PreparedStatement ps;
                     Connection con = MyConnection.getConnetion();
@@ -256,6 +256,7 @@ private void init() {
                         EmployeeDashboard ed = new EmployeeDashboard();
                         ed.setVisible(true);
                         ed.pack();
+                        EmployeeDashboard.employeEmail.setText(email);
                         this.dispose();
                     } else {
                         JOptionPane.showMessageDialog(this, "Incorrect email or password", "Login Failed", 2);
@@ -275,6 +276,7 @@ private void init() {
                         UserDashboard ud = new UserDashboard();
                         ud.setVisible(true);
                         ud.pack();
+                        UserDashboard.userEmail.setText(email);
                         this.dispose();
                     } else {
                         JOptionPane.showMessageDialog(this, "Incorrect email or password", "Login Failed", 2);
@@ -282,7 +284,7 @@ private void init() {
                 } catch (SQLException ex) {
                     Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }  else if (jRadioButton3.isSelected()) {
+            } else if (jRadioButton3.isSelected()) {
                 try {
                     PreparedStatement ps;
                     Connection con = MyConnection.getConnetion();
@@ -294,6 +296,7 @@ private void init() {
                         AdminDashboard ad = new AdminDashboard();
                         ad.setVisible(true);
                         ad.pack();
+                        AdminDashboard.adminEmail.setText(email);
                         this.dispose();
                     } else {
                         JOptionPane.showMessageDialog(this, "Incorrect email or password", "Login Failed", 2);

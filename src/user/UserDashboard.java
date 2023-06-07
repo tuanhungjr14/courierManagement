@@ -36,7 +36,7 @@ public class UserDashboard extends javax.swing.JFrame {
         jPanel15 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        userEmail = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -96,8 +96,8 @@ public class UserDashboard extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jLabel19.setText("AZ COURIER SERVICE");
 
-        jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
-        jLabel3.setText("user@gmail.com");
+        userEmail.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        userEmail.setText("user@gmail.com");
 
         jLabel20.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
         jLabel20.setText("Log out");
@@ -115,7 +115,7 @@ public class UserDashboard extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 627, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(userEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -125,7 +125,7 @@ public class UserDashboard extends javax.swing.JFrame {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
+                    .addComponent(userEmail)
                     .addComponent(jLabel20))
                 .addGap(0, 4, Short.MAX_VALUE))
         );
@@ -477,7 +477,6 @@ private void init(){
     private javax.swing.JLabel jLabel24;
     public static javax.swing.JLabel jLabel25;
     public static javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel3;
     public static javax.swing.JLabel jLabel33;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JPanel jPanel13;
@@ -492,5 +491,6 @@ private void init(){
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    public static javax.swing.JLabel userEmail;
     // End of variables declaration//GEN-END:variables
 }

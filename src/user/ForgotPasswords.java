@@ -1,7 +1,10 @@
 package user;
 
+import dao.ForgotPasswordDao;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -9,11 +12,18 @@ import java.util.logging.Logger;
  */
 public class ForgotPasswords extends javax.swing.JFrame {
 
+    ForgotPasswordDao fg = new ForgotPasswordDao();
+            
+            
+            
     int xx, xy;
+    Color notEdit = new Color(204, 204, 204);
+    Color edit = new Color(255, 255, 255);
 
     /**
      * Creates new form ForgotPasswordAdm
      */
+
     public ForgotPasswords() {
         initComponents();
     }
@@ -29,7 +39,7 @@ public class ForgotPasswords extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
@@ -37,9 +47,9 @@ public class ForgotPasswords extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -70,29 +80,29 @@ public class ForgotPasswords extends javax.swing.JFrame {
         jLabel5.setText("Forgot Password");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 330, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 0));
-        jButton1.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Save");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSave.setBackground(new java.awt.Color(255, 153, 0));
+        btnSave.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
+        btnSave.setText("Save");
+        btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnSaveMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 510, 160, 36));
+        jPanel3.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 510, 160, 36));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 382, -1));
+        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 382, -1));
         jPanel3.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 382, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -125,13 +135,6 @@ public class ForgotPasswords extends javax.swing.JFrame {
         jLabel6.setText("Answer");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 72, -1));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 382, -1));
-
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -155,6 +158,13 @@ public class ForgotPasswords extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 160, 36));
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 382, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,21 +193,51 @@ public class ForgotPasswords extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        if(isEmpty()){
+        String email = jTextField1.getText();
+        String ans = jTextField1.getText();
+        if(fg.getAns(email, ans)){
+            String pass = String.valueOf(jPasswordField1.getPassword());
+            fg.setPassword(email, pass);
+            new Login().setVisible(true);
+            this.dispose();
+        }
+        
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private boolean isEmpty() {
+        if (jTextField3.getText().length() < 10) {
+            JOptionPane.showMessageDialog(this, "Phone is to short", "Warning", 2);
+            return false;
+        }
+        if (String.valueOf(jPasswordField1.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter new password", "Warning", 2);
+            return false;
+        }
+        return true;
+    }
+
+    private boolean emailValidation() {
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter your email address", "Warning", 2);
+            return false;
+        }
+        if (!jTextField1.getText().matches("^.+@.+\\..+$")) {
+            JOptionPane.showMessageDialog(this, "Phone is to short", "Warning", 2);
+            return false;
+        }
+        return true;
+    }
+
+    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btnSaveMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         for (double i = 0.1; i < 1.0; i += 0.1) {
@@ -231,6 +271,10 @@ public class ForgotPasswords extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel3MouseDragged
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,7 +319,7 @@ public class ForgotPasswords extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton jButton1;
+    public static javax.swing.JButton btnSave;
     public static javax.swing.JButton jButton3;
     public static javax.swing.JLabel jLabel14;
     public static javax.swing.JLabel jLabel2;
