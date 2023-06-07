@@ -24,7 +24,7 @@ public int getMaxRow(){
 int row=0;
         try {
             st= con.createStatement();
-            rs=st.executeQuery("select max(uid) from user");
+            rs=st.executeQuery("select max(id) from user");
             while(rs.next()){
             row = rs.getInt(1);}
         } catch (SQLException ex) {
@@ -64,7 +64,7 @@ return false;
 }
 //insert data  into user table
 public void insert(String id,String username,String email,String pass,String phone,String seq,String ans,String address ){
-String sql="insert into user values(?,?,?,?,?,?) where role_id=3 ";
+String sql="insert into user values(?,?,?,?,?,?,?,?)  ";
         try {
             ps= con.prepareStatement(sql);
             ps.setString(1,id);
@@ -74,7 +74,7 @@ String sql="insert into user values(?,?,?,?,?,?) where role_id=3 ";
             ps.setString(5, phone);
             ps.setString(6, seq);
             ps.setString(7, ans);
-            ps.setString(6, address);
+            ps.setString(8, address);
             
             if(ps.executeUpdate()>0){
                 JOptionPane.showMessageDialog(null, "User  added  successfully");

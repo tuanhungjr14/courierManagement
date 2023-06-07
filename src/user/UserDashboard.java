@@ -167,6 +167,11 @@ public class UserDashboard extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 120, 138));
         jLabel1.setText("Acount");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 140, 30));
 
         jPanel3.setBackground(new java.awt.Color(42, 58, 73));
@@ -425,6 +430,17 @@ private void init(){
         this.setLocation(x - xx,y - xy);
     }//GEN-LAST:event_jPanel16MouseDragged
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        jPanel1.setBackground(selectionColor);
+        jPanel3.setBackground(sideColor);
+        jLabel1.setForeground(textSelectionColor);
+        jLabel2.setVisible(true);
+        jLabel15.setVisible(false);
+        UserAccount userAcc = new UserAccount();
+        userAcc.setVisible(true);
+        userAcc.pack();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -461,15 +477,15 @@ private void init(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel13;
     public static javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
+    public static javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     public static javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
+    public static javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     public static javax.swing.JLabel jLabel22;
@@ -478,7 +494,7 @@ private void init(){
     public static javax.swing.JLabel jLabel25;
     public static javax.swing.JLabel jLabel26;
     public static javax.swing.JLabel jLabel33;
-    private javax.swing.JPanel jPanel1;
+    public static javax.swing.JPanel jPanel1;
     public static javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
@@ -488,7 +504,7 @@ private void init(){
     private javax.swing.JPanel jPanel19;
     public static javax.swing.JPanel jPanel20;
     public static javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel3;
+    public static javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     public static javax.swing.JLabel userEmail;

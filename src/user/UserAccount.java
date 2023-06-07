@@ -1,8 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package user;
+
+import java.awt.Color;
 
 /**
  *
@@ -13,6 +12,8 @@ public class UserAccount extends javax.swing.JFrame {
     /**
      * Creates new form UserAccount
      */
+    Color textPrimaryColor = new Color(102,120,138);
+    Color primaryColor = new Color(42,58,73);
     public UserAccount() {
         initComponents();
     }
@@ -181,7 +182,12 @@ public class UserAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        System.exit(0);
+         setVisible(false);
+         UserDashboard.jPanel1.setBackground(primaryColor);
+        UserDashboard.jPanel3.setBackground(primaryColor);
+        UserDashboard.jLabel1.setForeground(textPrimaryColor);
+        UserDashboard.jLabel2.setVisible(true);
+        UserDashboard.jLabel15.setVisible(false);
     }//GEN-LAST:event_jLabel14MouseClicked
 
     /**

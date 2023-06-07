@@ -248,7 +248,7 @@ private void init() {
                 try {
                     PreparedStatement ps;
                     Connection con = MyConnection.getConnetion();
-                    ps = con.prepareStatement("select * from user inner join role on user.role_id=role.role_id where user.email=? and user.password=? and role.role_name='staff'");
+                    ps = con.prepareStatement("select * from employees  where email=? and password=? ");
                     ps.setString(1, email);
                     ps.setString(2, password);
                     ResultSet rs = ps.executeQuery();
@@ -268,7 +268,7 @@ private void init() {
                 try {
                     PreparedStatement ps;
                     Connection con = MyConnection.getConnetion();
-                    ps = con.prepareStatement("select * from user inner join role on user.role_id=role.role_id where user.email=? and user.password=? and role.role_name='customer'");
+                    ps = con.prepareStatement("select * from user  where email=? and password=? ");
                     ps.setString(1, email);
                     ps.setString(2, password);
                     ResultSet rs = ps.executeQuery();
@@ -288,7 +288,7 @@ private void init() {
                 try {
                     PreparedStatement ps;
                     Connection con = MyConnection.getConnetion();
-                    ps = con.prepareStatement("select * from user inner join role on user.role_id=role.role_id where user.email=? and user.password=? and role.role_name='admin'");
+                    ps = con.prepareStatement("select * from admin  where email=? and password=? ");
                     ps.setString(1, email);
                     ps.setString(2, password);
                     ResultSet rs = ps.executeQuery();
