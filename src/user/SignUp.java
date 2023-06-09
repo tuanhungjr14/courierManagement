@@ -372,8 +372,8 @@ public class SignUp extends javax.swing.JFrame {
             String password = String.valueOf(jPasswordField1.getPassword());
             String phone = jTextField5.getText();
             String seq = jComboBox1.getSelectedItem().toString();
-            String ans = jTextField6.getText();
-            String address = jTextField8.getText();
+            String ans = jTextField8.getText();
+            String address = jTextField6.getText();
             
             if(!user.isEmailExist(email)){
             if(!user.isPhoneExist(phone)){
@@ -381,7 +381,7 @@ public class SignUp extends javax.swing.JFrame {
                 new Login().setVisible(true);
                 this.dispose();
             }else{
-            JOptionPane.showMessageDialog(this, "This email address exists","Warning",2);
+            JOptionPane.showMessageDialog(this, "This phone address exists","Warning",2);
             }
                 
             }else{

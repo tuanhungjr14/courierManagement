@@ -59,7 +59,7 @@ return false;
     }
     //SET NEW PASSWORD
     public void setPassword(String email, String pass ){
-        String sql = "update user set upassword = ? where uemail = ?";
+        String sql = "update user set password = ? where email = ?";
         
         try {
             ps = con.prepareStatement(sql);
