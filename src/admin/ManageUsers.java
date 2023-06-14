@@ -1,26 +1,27 @@
 
-package user;
+package admin;
 
 import dao.UserDao;
+import java.awt.Color;
 import javax.swing.JOptionPane;
-
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author tuan1
+ * @author KhoaTran
  */
-public class UserAccount extends javax.swing.JFrame {
+public class ManageUsers extends javax.swing.JFrame {
 
     /**
-     * Creates new form UserAccount
+     * Creates new form ManageUsers
      */
     UserDao user = new UserDao();
-    private int uId;
-    String[] value = new String[9];
+    DefaultTableModel model;
+    int rowIndex;
 
-    public UserAccount() {
+    public ManageUsers() {
         initComponents();
-        init();
+        user.getUsersValue(jTable1, "");
     }
 
     /**
@@ -54,6 +55,12 @@ public class UserAccount extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -114,18 +121,18 @@ public class UserAccount extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 335, 140, 44));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, 140, 44));
 
         jButton2.setBackground(new java.awt.Color(255, 153, 51));
         jButton2.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Delete");
+        jButton2.setText("Clear");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(663, 335, 140, 44));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 300, 44));
 
         jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -196,6 +203,58 @@ public class UserAccount extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, -1, -1));
 
+        jButton3.setBackground(new java.awt.Color(255, 153, 51));
+        jButton3.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Delete");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 280, 140, 44));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "User ID", "Username", "Email", "Password", "Phone Number", "Sercurity Question", "Answer", "Address"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 720, 320));
+
+        jLabel11.setText("------------------------------------------------------------------------------------------------------------------------------------------------");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 720, -1));
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Search");
+        jLabel12.setToolTipText("");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 60, 30));
+
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField4KeyReleased(evt);
+            }
+        });
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 300, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -204,40 +263,136 @@ public class UserAccount extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    private void init() {
-        setLocation(140, 310); //day la cai gi vay
-        uId = user.getUserId(UserDashboard.userEmail.getText());
-        value = user.getUserValue(uId);
-        setValue();
+
+    private void usersTable() {
+        user.getUsersValue(jTable1, "");
+        model = (DefaultTableModel) jTable1.getModel();
+        jTable1.setRowHeight(30);
+        jTable1.setShowGrid(true);
+        jTable1.setGridColor(Color.BLACK);
+        jTable1.setBackground(Color.WHITE);
+        jTable1.setSelectionBackground(Color.LIGHT_GRAY);
     }
 
-    private void setValue() {
-        jTextField1.setText(value[0]);
-        jTextField2.setText(value[1]);
-        jTextField3.setText(value[2]);
-        jPasswordField1.setText(value[3]);
-        jTextField5.setText(value[4]);
-        jTextField6.setText(value[5]);
-        jTextField7.setText(value[6]);
-        jTextField8.setText(value[7]);
-    }
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (isEmpty()) {
+            if (!check()) {
+                String id = jTextField1.getText();
+                String username = jTextField2.getText();
+                String email = jTextField3.getText();
+                String password = String.valueOf(jPasswordField1.getPassword());
+                String phone = jTextField5.getText();
+                String seq = jTextField6.getText();
+                String ans = jTextField7.getText();
+                String address = jTextField8.getText();
+
+                user.update(id, username, email, ans, phone, seq, ans, address);
+                jTable1.setModel(new DefaultTableModel(null, new Object[]{"User ID", "Username", "Email", "Password", "Phone", "Security Question", "Answer", "Address Line"}));
+                user.getUsersValue(jTable1, "");
+                clear();
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        clear();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        jPasswordField1.setEchoChar('*');
+        jLabel9.setVisible(true);
+        jLabel10.setVisible(false);
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        jPasswordField1.setEchoChar((char) 0);
+        jLabel9.setVisible(false);
+        jLabel10.setVisible(true);
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (isEmpty()){
+            int id = Integer.parseInt(jTextField1.getText());
+            user.delete(id);
+            clear();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        model = (DefaultTableModel) jTable1.getModel();
+        rowIndex = jTable1.getSelectedRow();
+        jTextField1.setText(model.getValueAt(rowIndex, 0).toString());
+        jTextField2.setText(model.getValueAt(rowIndex, 1).toString());
+        jTextField3.setText(model.getValueAt(rowIndex, 2).toString());
+        jPasswordField1.setText(model.getValueAt(rowIndex, 3).toString());
+        jTextField5.setText(model.getValueAt(rowIndex, 4).toString());
+        jTextField6.setText(model.getValueAt(rowIndex, 5).toString());
+        jTextField7.setText(model.getValueAt(rowIndex, 6).toString());
+        jTextField8.setText(model.getValueAt(rowIndex, 7).toString());
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        char input = evt.getKeyChar();
+        if (!(input < '0' || input > '9') && input != '\b') {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Username doesn't contain any numbers!", "Warning", 2);
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
+        jTable1.setModel(new DefaultTableModel(null, new Object[]{"User ID", "Username", "Email", "Password", "Phone", "Security Question", "Answer", "Address Line"}));
+        user.getUsersValue(jTable1, jTextField4.getText());
+    }//GEN-LAST:event_jTextField4KeyReleased
 
     public boolean isEmpty() {
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please select a user", "Warning", 2);
+            return false;
+        }
         if (jTextField2.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "User is required", "Warning", 2);
             return false;
         }
-        if (jTextField3.getText().isEmpty()) {
+        if (jTextField4.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Email is required", "Warning", 2);
             return false;
         }
-        if (!jTextField3.getText().matches("^.+@.+\\..+$")) {
+        if (!jTextField4.getText().matches("^.+@.+\\..+$")) {
             JOptionPane.showMessageDialog(this, "Invalid email address", "Warning", 2);
             return false;
         }
@@ -272,90 +427,35 @@ public class UserAccount extends javax.swing.JFrame {
         return true;
     }
 
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (isEmpty()) {
-            if (!check()) {
-                String id = jTextField1.getText();
-                String username = jTextField2.getText();
-                String email = jTextField3.getText();
-                String password = String.valueOf(jPasswordField1.getPassword());
-                String phone = jTextField5.getText();
-                String seq = jTextField6.getText();
-                String ans = jTextField7.getText();
-                String address = jTextField8.getText();
-
-                user.update(id, username, email, ans, phone, seq, ans, address);
-                this.dispose();
-            }
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jLabel14MouseClicked
-
-    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        jPasswordField1.setEchoChar((char) 0);
-        jLabel9.setVisible(false);
-        jLabel10.setVisible(true);
-    }//GEN-LAST:event_jLabel9MouseClicked
-
-    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        jPasswordField1.setEchoChar('*');
-        jLabel9.setVisible(true);
-        jLabel10.setVisible(false);
-    }//GEN-LAST:event_jLabel10MouseClicked
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        user.delete(uId);
-        System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
-        char input = evt.getKeyChar();
-        if (!(input < '0' || input > '9') && input != '\b') {
-            evt.consume();
-            JOptionPane.showMessageDialog(this, "Username doesn't contain any numbers!", "Warning", 2);
-        }
-    }//GEN-LAST:event_jTextField2KeyTyped
-
-    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
-        if (!Character.isDigit(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_jTextField5KeyTyped
+    private void clear() {
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+//        jTextField4.setText("");
+        jTextField5.setText("");
+        jTextField6.setText("");
+        jTextField7.setText("");
+        jTextField8.setText("");
+        jPasswordField1.setText("");
+        jTable1.clearSelection();
+    }
 
     private boolean check() {
         String newEmail = jTextField3.getText();
         String newPhone = jTextField5.getText();
-        if (newEmail.equals(value[2]) && newPhone.equals(value[4])) {
+        String oldEmail = model.getValueAt(rowIndex, 2).toString();
+        String oldPhone = model.getValueAt(rowIndex, 4).toString();
+        if (newEmail.equals(oldEmail) && newPhone.equals(oldPhone)) {
             return false;
         } else {
-            if (!newEmail.equals(value[2])) {
+            if (!newEmail.equals(oldEmail)) {
                 boolean x = user.isEmailExist(newEmail);
                 if (x) {
                     JOptionPane.showMessageDialog(this, "This email already exists", "Warning", 2);
                 }
                 return x;
             }
-            if (!newEmail.equals(value[4])) {
+            if (!newEmail.equals(oldPhone)) {
                 boolean x = user.isPhoneExist(newPhone);
                 if (x) {
                     JOptionPane.showMessageDialog(this, "This phone number already exists", "Warning", 2);
@@ -365,14 +465,6 @@ public class UserAccount extends javax.swing.JFrame {
         }
         return false;
     }
-
-//    private void setDefault() {
-//        UserDashboard.jPanel7.setBackground(primaryColor);
-//        UserDashboard.jPanel8.setBackground(primaryColor);
-//        UserDashboard.jPanel9.setForeground(textPrimaryColor);
-//        UserDashboard.jLabel10.setVisible(true);
-//        UserDashboard.jLabel10.setVisible(false);
-//    }
 
     /**
      * @param args the command line arguments
@@ -391,13 +483,13 @@ public class UserAccount extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -405,7 +497,7 @@ public class UserAccount extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserAccount().setVisible(true);
+                new ManageUsers().setVisible(true);
             }
         });
     }
@@ -413,8 +505,11 @@ public class UserAccount extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     public static javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -426,9 +521,12 @@ public class UserAccount extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;

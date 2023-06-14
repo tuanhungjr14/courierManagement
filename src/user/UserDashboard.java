@@ -3,6 +3,7 @@ package user;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +23,17 @@ public class UserDashboard extends javax.swing.JFrame {
     public UserDashboard() {
         initComponents();
         init();
+         ImageIcon icon = new ImageIcon("src/icons/AzDeli.png");
+        ImageIcon icon1 = new ImageIcon("src/icons/dashboard.png");
+        ImageIcon icon2 = new ImageIcon("src/icons/logout.png");
+        ImageIcon icon3 = new ImageIcon("src/icons/delivery_dark.png");
+        ImageIcon icon4 = new ImageIcon("src/icons/delivery_light.png");
+        
+        jLabel19.setIcon(icon);
+        jLabel17.setIcon(icon1);
+        jLabel20.setIcon(icon2);
+        jLabel14.setIcon(icon3);
+        jLabel33.setIcon(icon4);
     }
 
     /**
@@ -232,11 +244,7 @@ public class UserDashboard extends javax.swing.JFrame {
         );
 
         jPanel13.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 20, 50));
-
-        jLabel14.setText("jLabel2");
         jPanel13.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-
-        jLabel33.setText("jLabel2");
         jPanel13.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         jPanel5.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 270, 50));

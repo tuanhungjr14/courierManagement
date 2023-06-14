@@ -4,8 +4,10 @@ package employee;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import user.Login;
+
 
 
 /**
@@ -23,6 +25,17 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     int xx,xy;
     public EmployeeDashboard() {
         initComponents();
+        ImageIcon icon = new ImageIcon("src/icons/AzDeli.png");
+        ImageIcon icon1 = new ImageIcon("src/icons/dashboard.png");
+        ImageIcon icon2 = new ImageIcon("src/icons/logout.png");
+        ImageIcon icon3 = new ImageIcon("src/icons/delivery_dark.png");
+        ImageIcon icon4 = new ImageIcon("src/icons/delivery_light.png");
+        
+        jLabel19.setIcon(icon);
+        jLabel17.setIcon(icon1);
+        jLabel20.setIcon(icon2);
+        jLabel14.setIcon(icon3);
+        jLabel33.setIcon(icon4);
     }
 
     /**
