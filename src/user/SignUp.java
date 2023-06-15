@@ -366,7 +366,7 @@ public class SignUp extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if(isEmpty()){
-            String id = jTextField1.getText();
+            int id = Integer.parseInt(jTextField1.getText());
             String username = jTextField2.getText();
             String email =  jTextField4.getText();
             String password = String.valueOf(jPasswordField1.getPassword());

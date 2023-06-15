@@ -28,12 +28,21 @@ public class UserDashboard extends javax.swing.JFrame {
         ImageIcon icon2 = new ImageIcon("src/icons/logout.png");
         ImageIcon icon3 = new ImageIcon("src/icons/delivery_dark.png");
         ImageIcon icon4 = new ImageIcon("src/icons/delivery_light.png");
+        ImageIcon icon5 = new ImageIcon("src/icons/account_dark.png");
+        ImageIcon icon6 = new ImageIcon("src/icons/account_light.png");
+        ImageIcon icon7 = new ImageIcon("src/icons/product_dark.png");
+        ImageIcon icon8 = new ImageIcon("src/icons/product_light.png");
         
         jLabel19.setIcon(icon);
         jLabel17.setIcon(icon1);
         jLabel20.setIcon(icon2);
         jLabel14.setIcon(icon3);
         jLabel33.setIcon(icon4);
+        jLabel2.setIcon(icon5);
+        jLabel15.setIcon(icon6);
+        jLabel25.setIcon(icon7);
+        jLabel26.setIcon(icon8);
+        
     }
 
     /**
@@ -201,11 +210,7 @@ public class UserDashboard extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 20, 50));
-
-        jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-
-        jLabel15.setText("jLabel2");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         jPanel5.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 270, 50));
@@ -305,11 +310,7 @@ public class UserDashboard extends javax.swing.JFrame {
         );
 
         jPanel20.add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 20, 50));
-
-        jLabel25.setText("jLabel2");
         jPanel20.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-
-        jLabel26.setText("jLabel2");
         jPanel20.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         jPanel5.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 270, 50));
@@ -506,7 +507,7 @@ private void init(){
     public static javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
+    public static javax.swing.JPanel jPanel16;
     public static javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;

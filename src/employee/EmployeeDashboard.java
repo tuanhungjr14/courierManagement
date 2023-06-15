@@ -10,6 +10,7 @@ import user.Login;
 
 
 
+
 /**
  *
  * @author tuan1
@@ -28,14 +29,18 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon("src/icons/AzDeli.png");
         ImageIcon icon1 = new ImageIcon("src/icons/dashboard.png");
         ImageIcon icon2 = new ImageIcon("src/icons/logout.png");
-        ImageIcon icon3 = new ImageIcon("src/icons/delivery_dark.png");
+        
         ImageIcon icon4 = new ImageIcon("src/icons/delivery_light.png");
+        
+        ImageIcon icon6 = new ImageIcon("src/icons/account_light.png");
         
         jLabel19.setIcon(icon);
         jLabel17.setIcon(icon1);
         jLabel20.setIcon(icon2);
-        jLabel14.setIcon(icon3);
+        
         jLabel33.setIcon(icon4);
+        
+        jLabel15.setIcon(icon6);
     }
 
     /**
@@ -58,12 +63,10 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -207,11 +210,6 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 20, 50));
-
-        jLabel2.setText("jLabel2");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-
-        jLabel15.setText("jLabel2");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         jPanel5.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 270, 50));
@@ -250,11 +248,6 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         );
 
         jPanel13.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 20, 50));
-
-        jLabel14.setText("jLabel2");
-        jPanel13.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-
-        jLabel33.setText("jLabel2");
         jPanel13.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         jPanel5.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 270, 50));
@@ -461,8 +454,8 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jPanel13.setBackground(selectionColor);
         jPanel17.setBackground(sideColor);
         jLabel13.setForeground(textSelectionColor);
-        jLabel33.setVisible(true);
-        jLabel14.setVisible(false);
+        
+        
         TrackOdrEmployee trackord = new TrackOdrEmployee();
         trackord.setVisible(true);
         trackord.pack();
@@ -511,7 +504,14 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel27MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    jPanel1.setBackground(selectionColor);
+        jPanel3.setBackground(sideColor);
+        jLabel1.setForeground(textSelectionColor);
         
+       
+        EmpAccount empAcc = new EmpAccount();
+        empAcc.setVisible(true);
+        empAcc.pack();
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -566,13 +566,11 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     public static javax.swing.JLabel employeEmail;
     public static javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel13;
-    public static javax.swing.JLabel jLabel14;
     public static javax.swing.JLabel jLabel15;
     public static javax.swing.JLabel jLabel16;
     public static javax.swing.JLabel jLabel17;
     public static javax.swing.JLabel jLabel18;
     public static javax.swing.JLabel jLabel19;
-    public static javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel20;
     public static javax.swing.JLabel jLabel21;
     public static javax.swing.JLabel jLabel22;

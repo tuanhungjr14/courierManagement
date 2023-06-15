@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
+
 
 /**
  *
@@ -26,6 +28,11 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         init();
+        ImageIcon icon = new ImageIcon("src/icons/hide.png");
+        ImageIcon icon1 = new ImageIcon("src/icons/visible.png");
+
+        jLabel1.setIcon(icon);
+        jLabel4.setIcon(icon1);
     }
 
     /**
@@ -50,6 +57,8 @@ public class Login extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -156,6 +165,20 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 0, 37, -1));
+
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, -1, -1));
+
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -308,6 +331,18 @@ private void init() {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+          jPasswordField1.setEchoChar((char) 0);
+        jLabel1.setVisible(false);
+        jLabel4.setVisible(true);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+       jPasswordField1.setEchoChar('*');
+        jLabel1.setVisible(true);
+        jLabel4.setVisible(false);
+    }//GEN-LAST:event_jLabel4MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -345,12 +380,14 @@ private void init() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel10;
     public static final javax.swing.JLabel jLabel11 = new javax.swing.JLabel();
     public static javax.swing.JLabel jLabel12;
     public static javax.swing.JLabel jLabel14;
     public static javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     public static javax.swing.JLabel jLabel5;
     public static javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;

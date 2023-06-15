@@ -4,14 +4,15 @@
  */
 package employee;
 
-import user.*;
+import java.awt.Color;
 
 /**
  *
  * @author tuan1
  */
 public class EmpAccount extends javax.swing.JFrame {
-
+    Color textPrimaryColor = new Color(102, 120, 138);
+    Color primaryColor = new Color(42, 58, 73);
     /**
      * Creates new form UserAccount
      */
@@ -183,7 +184,11 @@ public class EmpAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        System.exit(0);
+        setVisible(false);
+        EmployeeDashboard.jPanel1.setBackground(primaryColor);
+        EmployeeDashboard.jPanel3.setBackground(primaryColor);
+        EmployeeDashboard.jLabel1.setForeground(textPrimaryColor);
+        
     }//GEN-LAST:event_jLabel14MouseClicked
 
     /**

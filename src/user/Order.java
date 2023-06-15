@@ -20,6 +20,42 @@ public class Order extends javax.swing.JFrame {
     public Order() {
         initComponents();
     }
+//    public boolean isEmpty(){
+//     if(jTextField6.getText().isEmpty()){
+//         JOptionPane.showMessageDialog(this, "Price is required","Warning",2);
+//         return false;
+//     }
+//      if (jTextField5.getText().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Name product is required", "Warning", 2);
+//            return false;
+//        }
+//        
+//        if (jTextField1.getText().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Phone is required", "Warning", 2);
+//            return false;
+//        }
+//        if (jTextField1.getText().length()<10) {
+//            JOptionPane.showMessageDialog(this, "Phone is too short", "Warning", 2);
+//            return false;
+//        }
+//        if (jTextField1.getText().length()>10) {
+//            JOptionPane.showMessageDialog(this, "Phone is too long", "Warning", 2);
+//            return false;
+//        }
+//         if (jTextField8.getText().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Security answer is required", "Warning", 2);
+//            return false;
+//        }
+//        if (jTextField6.getText().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Address is required", "Warning", 2);
+//            return false;
+//        }
+//        if (jComboBox1.getSelectedIndex()==-1) {
+//            JOptionPane.showMessageDialog(this, "Address is required", "Warning", 2);
+//            return false;
+//        }
+// return true;
+// }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -116,7 +152,7 @@ public class Order extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hanoi", "Ho Chi Minh City", "Haiphong", "Danang", "Can Tho", "Hai Duong", "Bac Ninh", "Thai Nguyen", "Da Nang", "Hue", "Nha Trang", "Vung Tau", "Phan Thiet", "Long Xuyen", "Vinh", "Buon Ma Thuot", "Pleiku", "Qui Nhon", "Dong Hoi", "Tam Ky", "Soc Trang", "Rach Gia", "Ca Mau", "Ben Tre", "My Tho", "Bac Lieu", "Tan An", "Phu Ly", "Yen Bai", "Lao Cai", "Dien Bien Phu", "Son La", "Thai Binh", "Nam Dinh", "Ha Giang", "Lang Son", "Cao Bang", "Tuyen Quang", "Bac Kan", "Ha Long", "Mong Cai", "Hai Phong", "Nam Dinh", "Quang Ninh", "Thai Nguyen", "Ninh Binh", "Thanh Hoa", "Nghe An", "Ha Tinh", "Quang Binh", "Quang Tri", "Thua Thien-Hue", "Quang Nam", "Quang Ngai", "Binh Dinh", "Phu Yen", "Khanh Hoa", "Dak Lak", "Dak Nong", "Lam Dong", "Binh Thuan", "Kon Tum", "Gia Lai" }));
 
         jLabel6.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,9 +182,9 @@ public class Order extends javax.swing.JFrame {
             }
         });
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
 
         jTextField7.setBackground(new java.awt.Color(0, 153, 0));
         jTextField7.setForeground(new java.awt.Color(255, 255, 255));
@@ -212,6 +248,11 @@ public class Order extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("GET QUOTES");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jRadioButton1.setText("jRadioButton1");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -382,6 +423,33 @@ public class Order extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//          if(isEmpty()){
+//            String id = jTextField1.getText();
+//            String username = jTextField2.getText();
+//            String email =  jTextField4.getText();
+//            String password = String.valueOf(jPasswordField1.getPassword());
+//            String phone = jTextField5.getText();
+//            String seq = jComboBox1.getSelectedItem().toString();
+//            String ans = jTextField8.getText();
+//            String address = jTextField6.getText();
+//            
+//            if(!user.isEmailExist(email)){
+//            if(!user.isPhoneExist(phone)){
+//                user.insert(id, username, email, password, phone,seq,ans, address);
+//                new Login().setVisible(true);
+//                this.dispose();
+//            }else{
+//            JOptionPane.showMessageDialog(this, "This phone address exists","Warning",2);
+//            }
+//                
+//            }else{
+//            JOptionPane.showMessageDialog(this, "This email address exists","Warning",2);
+//            }
+//        }
+//    }    
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

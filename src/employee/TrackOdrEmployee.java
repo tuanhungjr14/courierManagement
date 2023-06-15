@@ -305,8 +305,7 @@ public class TrackOdrEmployee extends javax.swing.JFrame {
         EmployeeDashboard.jPanel13.setBackground(primaryColor);
         EmployeeDashboard.jPanel17.setBackground(primaryColor);
         EmployeeDashboard.jLabel13.setForeground(textPrimaryColor);
-        EmployeeDashboard.jLabel14.setVisible(true);
-        EmployeeDashboard.jLabel33.setVisible(false);
+        
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

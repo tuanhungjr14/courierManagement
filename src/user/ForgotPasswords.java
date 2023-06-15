@@ -1,9 +1,11 @@
 package user;
 
 import dao.ForgotPasswordDao;
+import static employee.EmployeeDashboard.jLabel19;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +29,12 @@ public class ForgotPasswords extends javax.swing.JFrame {
     public ForgotPasswords() {
         initComponents();
         init();
+        ImageIcon icon6 = new ImageIcon("src/icons/search.png");
+        ImageIcon icon8 = new ImageIcon("src/icons/visible.png");
+        ImageIcon icon9 = new ImageIcon("src/icons/hide.png");
+        jLabel1.setIcon(icon6);
+        jLabel8.setIcon(icon8);
+        jLabel9.setIcon(icon9);
     }
 
     /**
@@ -52,7 +60,6 @@ public class ForgotPasswords extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -171,7 +178,6 @@ public class ForgotPasswords extends javax.swing.JFrame {
         });
         jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 382, -1));
 
-        jLabel1.setText("jLabel1");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -179,10 +185,6 @@ public class ForgotPasswords extends javax.swing.JFrame {
         });
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, -1, -1));
 
-        jLabel7.setText("jLabel1");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, -1, -1));
-
-        jLabel8.setText("jLabel8");
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel8MouseClicked(evt);
@@ -190,7 +192,11 @@ public class ForgotPasswords extends javax.swing.JFrame {
         });
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, -1, -1));
 
-        jLabel9.setText("jLabel8");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -313,9 +319,10 @@ jTextField1.setBackground(notEdit);
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        jPasswordField1.setEchoChar('*');
-        jLabel8.setVisible(true);
-        jLabel9.setVisible(false);
+       
+        jPasswordField1.setEchoChar((char) 0);
+        jLabel1.setVisible(false);
+        jLabel4.setVisible(true);
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
@@ -329,6 +336,12 @@ jTextField1.setBackground(notEdit);
         btnSave.setEnabled(true);
         
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+       jPasswordField1.setEchoChar('*');
+        jLabel8.setVisible(true);
+        jLabel9.setVisible(false);
+    }//GEN-LAST:event_jLabel9MouseClicked
 
     /**
      * @param args the command line arguments
@@ -382,7 +395,6 @@ jTextField1.setBackground(notEdit);
     public static javax.swing.JLabel jLabel4;
     public static javax.swing.JLabel jLabel5;
     public static javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     public static javax.swing.JPanel jPanel3;
