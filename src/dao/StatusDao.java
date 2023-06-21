@@ -98,18 +98,20 @@ public class StatusDao {
 
         // Test tạo mới status
         int statusId = 1;
-        String statusName = "Active";
-        statusDao.createStatus(statusId, statusName);
+        String statusName = "Đang vận chuyển";
+        statusDao.createStatus(1, "Chuẩn bị hàng");
+        statusDao.createStatus(2, "Đang vận chuyển");
+        statusDao.createStatus(3, "Thành công");
 
-        // Test đọc thông tin status
-        statusDao.readStatus(statusId);
-
-        // Test cập nhật thông tin status
-        statusName = "Inactive";
-        statusDao.updateStatus(statusId, statusName);
-
-        // Test xóa status
-        statusDao.deleteStatus(statusId);
+//        // Test đọc thông tin status
+//        statusDao.readStatus(statusId);
+//
+//        // Test cập nhật thông tin status
+//        statusName = "Inactive";
+//        statusDao.updateStatus(statusId, statusName);
+//
+//        // Test xóa status
+//        statusDao.deleteStatus(statusId);
 
     }
 }
