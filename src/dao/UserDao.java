@@ -1,5 +1,5 @@
-
 package dao;
+
 import connection.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,59 +17,64 @@ import javax.swing.table.DefaultTableModel;
  * @author tuan1
  */
 public class UserDao {
+
     Connection con = MyConnection.getConnetion();
     PreparedStatement ps;
     Statement st;
     ResultSet rs;
 
-public int getMaxRow(){
-int row=0;
+    public int getMaxRow() {
+        int row = 0;
         try {
-            st= con.createStatement();
-            rs=st.executeQuery("select max(id) from user");
-            while(rs.next()){
-            row = rs.getInt(1);}
+            st = con.createStatement();
+            rs = st.executeQuery("select max(id) from user");
+            while (rs.next()) {
+                row = rs.getInt(1);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return row+1;
+        return row + 1;
     }
 //check email already exits
-public boolean isEmailExist(String email){
+
+    public boolean isEmailExist(String email) {
         try {
             ps = con.prepareStatement("select * from user where email =?");
             ps.setString(1, email);
             rs = ps.executeQuery();
-            if(rs.next()){
-            return true;
+            if (rs.next()) {
+                return true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
-return false;
-}
+        return false;
+    }
 //check phone number already exists
-public boolean isPhoneExist(String phone){
+
+    public boolean isPhoneExist(String phone) {
         try {
             ps = con.prepareStatement("select * from user where phone =?");
             ps.setString(1, phone);
             rs = ps.executeQuery();
-            if(rs.next()){
-            return true;
+            if (rs.next()) {
+                return true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
-return false;
-}
+        return false;
+    }
 //insert data  into user table
-public void insert(int id,String username,String email,String pass,String phone,String seq,String ans,String address ){
-String sql="insert into user values(?,?,?,?,?,?,?,?)  ";
+
+    public void insert(int id, String username, String email, String pass, String phone, String seq, String ans, String address) {
+        String sql = "insert into user values(?,?,?,?,?,?,?,?)  ";
         try {
-            ps= con.prepareStatement(sql);
-            ps.setInt(1,id);
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
             ps.setString(2, username);
             ps.setString(3, email);
             ps.setString(4, pass);
@@ -77,15 +82,16 @@ String sql="insert into user values(?,?,?,?,?,?,?,?)  ";
             ps.setString(6, seq);
             ps.setString(7, ans);
             ps.setString(8, address);
-            
-            if(ps.executeUpdate()>0){
+
+            if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "User  added  successfully");
             }
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-}
-   //update user data
+    }
+    //update user data
+
     public void update(int id, String username, String email, String pass, String phone, String seq, String ans, String address) {
         String sql = "update user set username = ?, email = ?, password = ?, phone = ?, seq = ?, ans = ?, address = ? where id = ?";
 
@@ -99,8 +105,7 @@ String sql="insert into user values(?,?,?,?,?,?,?,?)  ";
             ps.setString(6, ans);
             ps.setString(7, address);
             ps.setInt(8, id);
-            
-           
+
             if (ps.executeUpdate() > 0) {
 
                 JOptionPane.showMessageDialog(null, "User data successfully updated ");
@@ -196,7 +201,7 @@ String sql="insert into user values(?,?,?,?,?,?,?,?)  ";
                 row[5] = rs.getString(6);
                 row[6] = rs.getString(7);
                 row[7] = rs.getString(8);
-                
+
                 model.addRow(row);
             }
 
