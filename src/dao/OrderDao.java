@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import java.sql.Time;
+import java.sql.Timestamp;
 
 /**
  *
@@ -21,16 +21,16 @@ public class OrderDao {
     PreparedStatement ps;
     Statement st;
     ResultSet rs;
-    // Tạo order mới
 
-    public void createOrder(int orderId, String userId, int packageId, Time pickupTime, String customerName, String customerAddress, String customerPhone) {
+    // Tạo order mới
+    public void createOrder(int orderId, String userId, int packageId, Timestamp pickupTime, String customerName, String customerAddress, String customerPhone) {
         String sql = "INSERT INTO orders (order_id, user_id, package_id, pickup_time, customer_name, customer_address, customer_phone) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, orderId);
             ps.setString(2, userId);
             ps.setInt(3, packageId);
-            ps.setTime(4, pickupTime);
+            ps.setTimestamp(4, pickupTime);
             ps.setString(5, customerName);
             ps.setString(6, customerAddress);
             ps.setString(7, customerPhone);
@@ -54,7 +54,7 @@ public class OrderDao {
                 int id = rs.getInt("order_id");
                 String userId = rs.getString("user_id");
                 int packageId = rs.getInt("package_id");
-                Time pickupTime = rs.getTime("pickup_time");
+                Timestamp pickupTime = rs.getTimestamp("pickup_time");
                 String customerName = rs.getString("customer_name");
                 String customerAddress = rs.getString("customer_address");
                 String customerPhone = rs.getString("customer_phone");
@@ -75,13 +75,13 @@ public class OrderDao {
     }
 
     // Cập nhật thông tin order
-    public void updateOrder(int orderId, String userId, int packageId, Time pickupTime, String customerName, String customerAddress, String customerPhone) {
+    public void updateOrder(int orderId, String userId, int packageId, Timestamp pickupTime, String customerName, String customerAddress, String customerPhone) {
         String sql = "UPDATE orders SET user_id = ?, package_id = ?, pickup_time = ?, customer_name = ?, customer_address = ?, customer_phone = ? WHERE order_id = ?";
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, userId);
             ps.setInt(2, packageId);
-            ps.setTime(3, pickupTime);
+            ps.setTimestamp(3, pickupTime);
             ps.setString(4, customerName);
             ps.setString(5, customerAddress);
             ps.setString(6, customerPhone);
@@ -112,6 +112,36 @@ public class OrderDao {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+
+    // Hàm main để kiểm tra
+    public static void main(String[] args) {
+        OrderDao orderDao = new OrderDao();
+
+        // Test tạo order mới
+        int orderId = 1;
+        String userId = "1";
+        int packageId = 1;
+        Timestamp pickupTime = Timestamp.valueOf("2023-06-21 10:00:00");
+        String customerName = "John Doe";
+        String customerAddress = "123 Street";
+        String customerPhone = "123456789";
+        orderDao.createOrder(orderId, userId, packageId, pickupTime, customerName, customerAddress, customerPhone);
+
+        // Test đọc thông tin order
+        orderDao.readOrder(orderId);
+
+//        // Test cập nhật thông tin order
+//        userId = "user456";
+//        packageId = 2;
+//        pickupTime = Timestamp.valueOf("2023-06-21 12:00:00");
+//        customerName = "Jane Smith";
+//        customerAddress = "456 Avenue";
+//        customerPhone = "987654321";
+//        orderDao.updateOrder(orderId, userId, packageId, pickupTime, customerName, customerAddress, customerPhone);
+//
+//        // Test xóa order
+//        orderDao.deleteOrder(orderId);
     }
 
 }
