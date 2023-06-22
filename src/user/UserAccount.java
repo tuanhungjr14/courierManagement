@@ -1,10 +1,8 @@
-
 package user;
 
 import dao.UserDao;
 import java.awt.Color;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -15,7 +13,7 @@ public class UserAccount extends javax.swing.JFrame {
     /**
      * Creates new form UserAccount
      */
-   Color textPrimaryColor = new Color(102, 120, 138);
+    Color textPrimaryColor = new Color(102, 120, 138);
     Color primaryColor = new Color(42, 58, 73);
     UserDao user = new UserDao();
     private int uId;
@@ -212,7 +210,7 @@ public class UserAccount extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     private void init() {
-        
+
         uId = user.getUserId(UserDashboard.userEmail.getText());
         value = user.getUserValue(uId);
         setValue();

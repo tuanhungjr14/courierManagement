@@ -126,7 +126,7 @@ public class PackageDao {
         PackageDao packageDao = new PackageDao();
 
         // Test tạo package mới
-        int packageId = 1;
+        int packageId = 2;
         String weight = "10 kg";
         String size = "30x20x10";
         int typeId = 1;

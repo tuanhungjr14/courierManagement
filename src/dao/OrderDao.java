@@ -119,7 +119,7 @@ public class OrderDao {
         OrderDao orderDao = new OrderDao();
 
         // Test tạo order mới
-        int orderId = 1;
+        int orderId = 2;
         String userId = "1";
         int packageId = 1;
         Timestamp pickupTime = Timestamp.valueOf("2023-06-21 10:00:00");

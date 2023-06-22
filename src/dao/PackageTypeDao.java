@@ -5,37 +5,45 @@
 package dao;
 
 import connection.MyConnection;
+import java.awt.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author KhoaTran
  */
-public class PackpageTypeDao {
+public class PackageTypeDao {
 
     Connection con = MyConnection.getConnetion();
     PreparedStatement ps;
     Statement st;
     ResultSet rs;
 
-    public void createPackageType(int typeId, String name, String description) {
-        String sql = "INSERT INTO package_type (type_id, type_name, type_description) VALUES (?, ?, ?)";
+    public boolean createPackageType(String name, String description) {
+        String sql = "INSERT INTO package_type ( type_name, type_description) VALUES ( ?, ?)";
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, typeId);
-            ps.setString(2, name);
-            ps.setString(3, description);
+            ps.setString(1, name);
+            ps.setString(2, description);
 
             if (ps.executeUpdate() > 0) {
-                System.out.println("New package type added successfully.");
+                JOptionPane.showMessageDialog(null, "New package type added successfully.");
+                return true;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return false;
         }
+        return false;
     }
 
     public void readPackageType(int typeId) {
@@ -60,6 +68,30 @@ public class PackpageTypeDao {
         }
     }
 
+    /**
+     *
+     * @return
+     */
+    public void readAllPackageTypes(JTable table) {
+
+        try {
+            String sql = "SELECT * FROM package_type";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            Object[] row;
+            while (rs.next()) {
+                row = new Object[3];
+                row[0] = rs.getInt(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getString(3);
+                model.addRow(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PackageTypeDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void updatePackageType(int typeId, String name, String description) {
         String sql = "UPDATE package_type SET type_name = ?, type_description = ? WHERE type_id = ?";
         try {
@@ -69,9 +101,9 @@ public class PackpageTypeDao {
             ps.setInt(3, typeId);
 
             if (ps.executeUpdate() > 0) {
-                System.out.println("Package type updated successfully.");
+                JOptionPane.showMessageDialog(null, "Package type updated successfully.");
             } else {
-                System.out.println("Package type with type_id " + typeId + " not found.");
+                JOptionPane.showMessageDialog(null, "Package type with type_id " + typeId + " not found.");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -80,17 +112,20 @@ public class PackpageTypeDao {
 
     public void deletePackageType(int typeId) {
         String sql = "DELETE FROM package_type WHERE type_id = ?";
-        try {
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, typeId);
+        int x = JOptionPane.showConfirmDialog(null, "Delete this Package type?");
+        if (x == JOptionPane.OK_OPTION) {
+            try {
+                ps = con.prepareStatement(sql);
+                ps.setInt(1, typeId);
 
-            if (ps.executeUpdate() > 0) {
-                System.out.println("Package type deleted successfully.");
-            } else {
-                System.out.println("Package type with type_id " + typeId + " not found.");
+                if (ps.executeUpdate() > 0) {
+                    JOptionPane.showMessageDialog(null, "Package type with type_id " + typeId + " has been deleted");
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Package type with type_id " + typeId + " not found.");
+                ex.printStackTrace();
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
         }
+
     }
 }

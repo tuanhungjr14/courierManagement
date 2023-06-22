@@ -11,7 +11,7 @@ package dao;
 public class TestMain {
 
     public static void main(String[] args) {
-        PackpageTypeDao packageTypeDao = new PackpageTypeDao();
+        PackageTypeDao packageTypeDao = new PackageTypeDao();
          packageTypeDao.createPackageType(1, "Type 1", "Description 1");
         packageTypeDao.readPackageType(1);
         packageTypeDao.updatePackageType(1, "Updated Type 1", "Updated Description 1");

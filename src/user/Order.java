@@ -1,6 +1,6 @@
-
 package user;
 
+import dao.OrderDao;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,9 +14,11 @@ public class Order extends javax.swing.JFrame {
     /**
      * Creates new form Order
      */
-    
-     Color textPrimaryColor = new Color(102,120,138);
-    Color primaryColor = new Color(42,58,73);
+    Color textPrimaryColor = new Color(102, 120, 138);
+    Color primaryColor = new Color(42, 58, 73);
+
+    OrderDao order = new OrderDao();
+
     public Order() {
         initComponents();
     }
@@ -185,6 +187,11 @@ public class Order extends javax.swing.JFrame {
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20" }));
+        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox5ActionPerformed(evt);
+            }
+        });
 
         jTextField7.setBackground(new java.awt.Color(0, 153, 0));
         jTextField7.setForeground(new java.awt.Color(255, 255, 255));
@@ -412,10 +419,10 @@ public class Order extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        for(double i=0.1 ;i<1.0;i+=0.1){
-        String s=""+i;
-        float f= Float.parseFloat(s);
-        this.setOpacity(f);
+        for (double i = 0.1; i < 1.0; i += 0.1) {
+            String s = "" + i;
+            float f = Float.parseFloat(s);
+            this.setOpacity(f);
             try {
                 Thread.sleep(40);
             } catch (InterruptedException ex) {
@@ -450,6 +457,10 @@ public class Order extends javax.swing.JFrame {
 //        }
 //    }    
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox5ActionPerformed
 
     /**
      * @param args the command line arguments
