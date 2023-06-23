@@ -23,17 +23,17 @@ public class OrderDao {
     ResultSet rs;
 
     // Tạo order mới
-    public void createOrder(int orderId, String userId, int packageId, Timestamp pickupTime, String customerName, String customerAddress, String customerPhone) {
-        String sql = "INSERT INTO orders (order_id, user_id, package_id, pickup_time, customer_name, customer_address, customer_phone) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public void createOrder(int userId, int packageId, Timestamp pickupTime, String customerName, String customerAddress, String customerPhone) {
+        String sql = "INSERT INTO orders ( user_id, package_id, pickup_time, customer_name, customer_address, customer_phone) VALUES ( ?, ?, ?, ?, ?, ?)";
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, orderId);
-            ps.setString(2, userId);
-            ps.setInt(3, packageId);
-            ps.setTimestamp(4, pickupTime);
-            ps.setString(5, customerName);
-            ps.setString(6, customerAddress);
-            ps.setString(7, customerPhone);
+
+            ps.setInt(1, userId);
+            ps.setInt(2, packageId);
+            ps.setTimestamp(3, pickupTime);
+            ps.setString(4, customerName);
+            ps.setString(5, customerAddress);
+            ps.setString(6, customerPhone);
 
             if (ps.executeUpdate() > 0) {
                 System.out.println("New order added successfully.");
@@ -120,13 +120,13 @@ public class OrderDao {
 
         // Test tạo order mới
         int orderId = 2;
-        String userId = "1";
+        int userId = 1;
         int packageId = 1;
         Timestamp pickupTime = Timestamp.valueOf("2023-06-21 10:00:00");
         String customerName = "John Doe";
         String customerAddress = "123 Street";
         String customerPhone = "123456789";
-        orderDao.createOrder(orderId, userId, packageId, pickupTime, customerName, customerAddress, customerPhone);
+        orderDao.createOrder(userId, packageId, pickupTime, customerName, customerAddress, customerPhone);
 
         // Test đọc thông tin order
         orderDao.readOrder(orderId);

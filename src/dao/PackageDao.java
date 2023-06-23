@@ -8,6 +8,7 @@ package dao;
  *
  * @author KhoaTran
  */
+import com.mysql.cj.xdevapi.Statement;
 import connection.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,24 +22,49 @@ public class PackageDao {
     ResultSet rs;
 
     // Tạo package mới
-    public void createPackage(int packageId, String weight, String size, int typeId, String content, String deliveryType, String cost) {
-        String sql = "INSERT INTO package (package_id, weight, size, type_id, content, delivery_type, cost) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public int createPackage(String weight, String size, int typeId, String content, String deliveryType, String cost) {
+        String sql = "INSERT INTO package (weight, size, type_id, content, delivery_type, cost) VALUES (?, ?, ?, ?, ?, ?)";
+        int packageId = -1; // Giá trị mặc định nếu không lấy được ID
+
         try {
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, packageId);
-            ps.setString(2, weight);
-            ps.setString(3, size);
-            ps.setInt(4, typeId);
-            ps.setString(5, content);
-            ps.setString(6, deliveryType);
-            ps.setString(7, cost);
+            ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setString(1, weight);
+            ps.setString(2, size);
+            ps.setInt(3, typeId);
+            ps.setString(4, content);
+            ps.setString(5, deliveryType);
+            ps.setString(6, cost);
 
             if (ps.executeUpdate() > 0) {
                 System.out.println("New package added successfully.");
+                ResultSet generatedKeys = ps.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    packageId = generatedKeys.getInt(1);
+                    System.out.println("Generated package ID: " + packageId);
+                }
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+
+        return packageId;
+    }
+//kiểm tra exist
+
+    public boolean packageExists(int packageId) {
+        String sql = "SELECT COUNT(*) FROM package WHERE package_id = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, packageId);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 
     // Đọc thông tin package
@@ -121,7 +147,7 @@ public class PackageDao {
         }
         return true;
     }
-    
+
     public static void main(String[] args) {
         PackageDao packageDao = new PackageDao();
 
@@ -134,7 +160,7 @@ public class PackageDao {
         String deliveryType = "Express";
         String cost = "$20";
         if (packageDao.validateInput(packageId, weight, size, typeId, content, deliveryType, cost)) {
-            packageDao.createPackage(packageId, weight, size, typeId, content, deliveryType, cost);
+            packageDao.createPackage(weight, size, typeId, content, deliveryType, cost);
         }
 
         // Test đọc thông tin package
@@ -150,7 +176,6 @@ public class PackageDao {
 //        if (packageDao.validateInput(packageId, weight, size, typeId, content, deliveryType, cost)) {
 //            packageDao.updatePackage(packageId, weight, size, typeId, content, deliveryType, cost);
 //        }
-
         // Test xóa package
 //        packageDao.deletePackage(packageId);
     }

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -90,6 +91,27 @@ public class PackageTypeDao {
         } catch (SQLException ex) {
             Logger.getLogger(PackageTypeDao.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public String[] readAllPackageTypes() throws SQLException {
+        ArrayList<String> packageTypes = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM package_type";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String packageName = rs.getString(2);
+                String formattedPackage = id + ". " + packageName;
+                packageTypes.add(formattedPackage);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PackageTypeDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return packageTypes.toArray(new String[0]);
     }
 
     public void updatePackageType(int typeId, String name, String description) {
