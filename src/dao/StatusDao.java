@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JTable;
 
 public class StatusDao {
 
@@ -113,5 +114,9 @@ public class StatusDao {
 //        // Test xóa status
 //        statusDao.deleteStatus(statusId);
 
+    }
+
+    public void readStatus(JTable jTable1) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

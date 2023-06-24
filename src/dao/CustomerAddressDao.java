@@ -130,4 +130,8 @@ public class CustomerAddressDao {
 //        // Test xóa địa chỉ khách hàng
 //        addressDao.deleteCustomerAddress(1);
     }
+
+    public void readCustomerAddress(JTable jTable1) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

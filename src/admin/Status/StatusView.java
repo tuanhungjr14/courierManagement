@@ -4,6 +4,9 @@
  */
 package admin.Status;
 
+import dao.StatusDao;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ADMIN
@@ -13,8 +16,12 @@ public class StatusView extends javax.swing.JFrame {
     /**
      * Creates new form StatusView
      */
+    StatusDao localStatus = new StatusDao();
+    int rowIndex;
+
     public StatusView() {
         initComponents();
+        localStatus.readStatus(WIDTH);
     }
 
     /**
@@ -38,8 +45,10 @@ public class StatusView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         btnClear1 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 0));
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -55,7 +64,7 @@ public class StatusView extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnUpdate.setBackground(new java.awt.Color(255, 153, 0));
-        btnUpdate.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +75,7 @@ public class StatusView extends javax.swing.JFrame {
         jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 120, 30));
 
         btnCreate.setBackground(new java.awt.Color(255, 102, 0));
-        btnCreate.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        btnCreate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCreate.setForeground(new java.awt.Color(255, 255, 255));
         btnCreate.setText("Create new");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +85,7 @@ public class StatusView extends javax.swing.JFrame {
         });
         jPanel1.add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 110, 30));
 
-        jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Status");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 130, -1));
@@ -86,7 +95,7 @@ public class StatusView extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 160, -1));
 
         btnDelete.setBackground(new java.awt.Color(255, 0, 0));
-        btnDelete.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -131,14 +140,14 @@ public class StatusView extends javax.swing.JFrame {
         jLabel11.setText("------------------------------------------------------------------------------------------------------------------------------------------------");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 720, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setText("Status Package Management");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 530, 30));
 
         btnClear1.setBackground(new java.awt.Color(255, 153, 51));
-        btnClear1.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        btnClear1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnClear1.setForeground(new java.awt.Color(255, 255, 255));
         btnClear1.setText("Clear");
         btnClear1.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +156,16 @@ public class StatusView extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnClear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, 100, 30));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("X");
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 40, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,18 +181,33 @@ public class StatusView extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-       
+        String status = jTextField1.getText();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        rowIndex = jTable1.getSelectedRow();
+        int localId = (int) model.getValueAt(rowIndex, 0);
+        localStatus.updateStatus(localId, status);
+        model.setRowCount(0);
+        localStatus.readStatus(jTable1);
+
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-       
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        rowIndex = jTable1.getSelectedRow();
+        int localId = (int) model.getValueAt(rowIndex, 0);
+        localStatus.deleteStatus(localId);
+        model.setRowCount(0);
+        localStatus.readStatus(jTable1);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        rowIndex = jTable1.getSelectedRow();
+        jTextField1.setText(model.getValueAt(rowIndex, 1).toString());
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed
@@ -189,8 +223,13 @@ public class StatusView extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        
+        StatusViewCreate createStatus = new StatusViewCreate();
+        createStatus.setVisible(true);
     }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel14MouseClicked
 
     /**
      * @param args the command line arguments
@@ -234,6 +273,7 @@ public class StatusView extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
