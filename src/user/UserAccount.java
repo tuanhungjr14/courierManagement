@@ -1,8 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package user;
+
+import dao.UserDao;
+import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,8 +13,15 @@ public class UserAccount extends javax.swing.JFrame {
     /**
      * Creates new form UserAccount
      */
+    Color textPrimaryColor = new Color(102, 120, 138);
+    Color primaryColor = new Color(42, 58, 73);
+    UserDao user = new UserDao();
+    private int uId;
+    String[] value = new String[9];
+
     public UserAccount() {
         initComponents();
+        init();
     }
 
     /**
@@ -30,7 +37,6 @@ public class UserAccount extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
@@ -46,6 +52,9 @@ public class UserAccount extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -66,6 +75,11 @@ public class UserAccount extends javax.swing.JFrame {
                 jTextField2ActionPerformed(evt);
             }
         });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 152, 293, -1));
 
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +88,17 @@ public class UserAccount extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 218, 293, -1));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 291, 293, -1));
+
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
         jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 357, 293, -1));
 
         jTextField6.setEditable(false);
@@ -97,6 +121,11 @@ public class UserAccount extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Delete");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(663, 335, 140, 44));
 
         jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
@@ -148,6 +177,23 @@ public class UserAccount extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 0, 37, -1));
+        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 290, -1));
+
+        jLabel10.setText("hide");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, -1, -1));
+
+        jLabel11.setText("hide");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,19 +203,96 @@ public class UserAccount extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    private void init() {
+
+        uId = user.getUserId(UserDashboard.userEmail.getText());
+        value = user.getUserValue(uId);
+        setValue();
+    }
+
+    private void setValue() {
+        jTextField1.setText(value[0]);
+        jTextField2.setText(value[1]);
+        jTextField3.setText(value[2]);
+        jPasswordField1.setText(value[3]);
+        jTextField5.setText(value[4]);
+        jTextField6.setText(value[5]);
+        jTextField7.setText(value[6]);
+        jTextField8.setText(value[7]);
+    }
+
+    public boolean isEmpty() {
+        if (jTextField2.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "User is required", "Warning", 2);
+            return false;
+        }
+        if (jTextField3.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Email is required", "Warning", 2);
+            return false;
+        }
+        if (!jTextField3.getText().matches("^.+@.+\\..+$")) {
+            JOptionPane.showMessageDialog(this, "Invalid email address", "Warning", 2);
+            return false;
+        }
+        if (String.valueOf(jPasswordField1.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Password is required", "Warning", 2);
+            return false;
+        }
+        if (jTextField5.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Phone is required", "Warning", 2);
+            return false;
+        }
+        if (jTextField5.getText().length() < 10) {
+            JOptionPane.showMessageDialog(this, "Phone is too short", "Warning", 2);
+            return false;
+        }
+        if (jTextField5.getText().length() > 10) {
+            JOptionPane.showMessageDialog(this, "Phone is too long", "Warning", 2);
+            return false;
+        }
+        if (jTextField8.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Security answer is required", "Warning", 2);
+            return false;
+        }
+        if (jTextField6.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Address is required", "Warning", 2);
+            return false;
+        }
+//        if (jComboBox1.getSelectedIndex() == -1) {
+//            JOptionPane.showMessageDialog(this, "Address is required", "Warning", 2);
+//            return false;
+//        }
+        return true;
+    }
+
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        if (isEmpty()) {
+            if (!check()) {
+                int id = Integer.parseInt(jTextField1.getText());
+                String username = jTextField2.getText();
+                String email = jTextField3.getText();
+                String password = String.valueOf(jPasswordField1.getPassword());
+                String phone = jTextField5.getText();
+                String seq = jTextField6.getText();
+                String ans = jTextField7.getText();
+                String address = jTextField8.getText();
+
+                user.update(id, username, email, password, phone, seq, ans, address);
+                this.dispose();
+                setDefault();
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -181,8 +304,76 @@ public class UserAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        System.exit(0);
+        setVisible(false);
+        setDefault();
     }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        jPasswordField1.setEchoChar('*');
+        jLabel10.setVisible(true);
+        jLabel11.setVisible(false);
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        user.delete(uId);
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        char input = evt.getKeyChar();
+        if (!(input < '0' || input > '9') && input != '\b') {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Username doesn't contain any numbers!", "Warning", 2);
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        jPasswordField1.setEchoChar((char) 0);
+        jLabel1.setVisible(false);
+        jLabel4.setVisible(true);
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private boolean check() {
+        String newEmail = jTextField3.getText();
+        String newPhone = jTextField5.getText();
+        if (newEmail.equals(value[2]) && newPhone.equals(value[4])) {
+            return false;
+        } else {
+            if (!newEmail.equals(value[2])) {
+                boolean x = user.isEmailExist(newEmail);
+                if (x) {
+                    JOptionPane.showMessageDialog(this, "This email already exists", "Warning", 2);
+                }
+                return x;
+            }
+            if (!newPhone.equals(value[4])) {
+                boolean x = user.isPhoneExist(newPhone);
+                if (x) {
+                    JOptionPane.showMessageDialog(this, "This phone number already exists", "Warning", 2);
+                }
+                return x;
+            }
+        }
+        return false;
+    }
+
+    private void setDefault() {
+        UserDashboard.jPanel1.setBackground(primaryColor);
+        UserDashboard.jPanel3.setBackground(primaryColor);
+        UserDashboard.jPanel1.setForeground(textPrimaryColor);
+        UserDashboard.jLabel2.setVisible(true);
+        UserDashboard.jLabel15.setVisible(false);
+    }
 
     /**
      * @param args the command line arguments
@@ -210,6 +401,7 @@ public class UserAccount extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(UserAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -223,6 +415,8 @@ public class UserAccount extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     public static javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -232,10 +426,10 @@ public class UserAccount extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;

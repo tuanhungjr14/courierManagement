@@ -1,4 +1,3 @@
-
 package user;
 
 import dao.UserDao;
@@ -16,13 +15,13 @@ public class SignUp extends javax.swing.JFrame {
     /**
      * Creates new form SignUp
      */
-    UserDao user = new UserDao(); 
-    Color notEdit = new Color(204,204,204);
+    UserDao user = new UserDao();
+    Color notEdit = new Color(204, 204, 204);
+
     public SignUp() {
         initComponents();
         init();
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,6 +81,11 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
 
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField2KeyTyped(evt);
@@ -166,7 +170,12 @@ public class SignUp extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Answer");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What's your favorite animal?", "What's your favorite game?", "What's your favorite sport?", "What's your favorite food?", " " }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -296,16 +305,17 @@ public class SignUp extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
- private void init(){
+ private void init() {
         jTextField1.setBackground(notEdit);
         jTextField1.setText(String.valueOf(user.getMaxRow()));
     }
- public boolean isEmpty(){
-     if(jTextField2.getText().isEmpty()){
-         JOptionPane.showMessageDialog(this, "User is required","Warning",2);
-         return false;
-     }
-      if (jTextField4.getText().isEmpty()) {
+
+    public boolean isEmpty() {
+        if (jTextField2.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "User is required", "Warning", 2);
+            return false;
+        }
+        if (jTextField4.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Email is required", "Warning", 2);
             return false;
         }
@@ -321,15 +331,15 @@ public class SignUp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Phone is required", "Warning", 2);
             return false;
         }
-        if (jTextField5.getText().length()<10) {
+        if (jTextField5.getText().length() < 10) {
             JOptionPane.showMessageDialog(this, "Phone is too short", "Warning", 2);
             return false;
         }
-        if (jTextField5.getText().length()>10) {
+        if (jTextField5.getText().length() > 10) {
             JOptionPane.showMessageDialog(this, "Phone is too long", "Warning", 2);
             return false;
         }
-         if (jTextField8.getText().isEmpty()) {
+        if (jTextField8.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Security answer is required", "Warning", 2);
             return false;
         }
@@ -337,12 +347,12 @@ public class SignUp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Address is required", "Warning", 2);
             return false;
         }
-        if (jComboBox1.getSelectedIndex()==-1) {
-            JOptionPane.showMessageDialog(this, "Address is required", "Warning", 2);
-            return false;
-        }
- return true;
- }
+//        if (jComboBox1.getSelectedIndex()==-1) {
+//            JOptionPane.showMessageDialog(this, "Address is required", "Warning", 2);
+//            return false;
+//        }
+        return true;
+    }
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
@@ -360,36 +370,36 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        if(isEmpty()){
-            String id = jTextField1.getText();
+        if (isEmpty()) {
+            int id = Integer.parseInt(jTextField1.getText());
             String username = jTextField2.getText();
-            String email =  jTextField4.getText();
+            String email = jTextField4.getText();
             String password = String.valueOf(jPasswordField1.getPassword());
             String phone = jTextField5.getText();
             String seq = jComboBox1.getSelectedItem().toString();
-            String ans = jTextField6.getText();
-            String address = jTextField8.getText();
-            
-            if(!user.isEmailExist(email)){
-            if(!user.isPhoneExist(phone)){
-                user.insert(id, username, email, password, phone,seq,ans, address);
-                new Login().setVisible(true);
-                this.dispose();
-            }else{
-            JOptionPane.showMessageDialog(this, "This email address exists","Warning",2);
-            }
-                
-            }else{
-            JOptionPane.showMessageDialog(this, "This email address exists","Warning",2);
+            String ans = jTextField8.getText();
+            String address = jTextField6.getText();
+
+            if (!user.isEmailExist(email)) {
+                if (!user.isPhoneExist(phone)) {
+                    user.insert(id, username, email, password, phone, seq, ans, address);
+                    new Login().setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "This phone address exists", "Warning", 2);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "This email address exists", "Warning", 2);
             }
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        for(double i=0.1 ;i<1.0;i+=0.1){
-        String s=""+i;
-        float f= Float.parseFloat(s);
-        this.setOpacity(f);
+        for (double i = 0.1; i < 1.0; i += 0.1) {
+            String s = "" + i;
+            float f = Float.parseFloat(s);
+            this.setOpacity(f);
             try {
                 Thread.sleep(40);
             } catch (InterruptedException ex) {
@@ -405,16 +415,25 @@ public class SignUp extends javax.swing.JFrame {
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
         char input = evt.getKeyChar();
-        if(!(input<'0'|| input >'9')&& input !='\b'){
-        evt.consume();
-        JOptionPane.showMessageDialog(this, "Username doesn't contain any numbers!","Warning",2);}
+        if (!(input < '0' || input > '9') && input != '\b') {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Username doesn't contain any numbers!", "Warning", 2);
+        }
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
-        if(!Character.isDigit(evt.getKeyChar())){
-        evt.consume();
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
         }
     }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments

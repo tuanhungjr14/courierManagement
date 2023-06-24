@@ -1,9 +1,11 @@
 package user;
 
 import dao.ForgotPasswordDao;
+import static employee.EmployeeDashboard.jLabel19;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,6 +28,13 @@ public class ForgotPasswords extends javax.swing.JFrame {
 
     public ForgotPasswords() {
         initComponents();
+        init();
+        ImageIcon icon6 = new ImageIcon("src/icons/search.png");
+        ImageIcon icon8 = new ImageIcon("src/icons/visible.png");
+        ImageIcon icon9 = new ImageIcon("src/icons/hide.png");
+        jLabel1.setIcon(icon6);
+        jLabel8.setIcon(icon8);
+        jLabel9.setIcon(icon9);
     }
 
     /**
@@ -50,6 +59,9 @@ public class ForgotPasswords extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -166,6 +178,27 @@ public class ForgotPasswords extends javax.swing.JFrame {
         });
         jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 382, -1));
 
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, -1, -1));
+
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, -1, -1));
+
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -180,7 +213,16 @@ public class ForgotPasswords extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+private void init(){
+jTextField1.setBackground(notEdit);
+        jTextField3.setBackground(notEdit);
+        jPasswordField1.setBackground(notEdit);
+        jTextField1.setEditable(false);
+        jTextField3.setEditable(false);
+        jPasswordField1.setEditable(false);
+        btnSave.setEnabled(false);
+        
+}
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel14MouseClicked
@@ -195,8 +237,8 @@ public class ForgotPasswords extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if(isEmpty()){
-        String email = jTextField1.getText();
-        String ans = jTextField1.getText();
+        String email = jTextField2.getText();
+        String ans = jTextField3.getText();
         if(fg.getAns(email, ans)){
             String pass = String.valueOf(jPasswordField1.getPassword());
             fg.setPassword(email, pass);
@@ -212,8 +254,8 @@ public class ForgotPasswords extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private boolean isEmpty() {
-        if (jTextField3.getText().length() < 10) {
-            JOptionPane.showMessageDialog(this, "Phone is to short", "Warning", 2);
+        if (jTextField1.getText().length() < 10) {
+            JOptionPane.showMessageDialog(this, "Sercurity is required", "Warning", 2);
             return false;
         }
         if (String.valueOf(jPasswordField1.getPassword()).isEmpty()) {
@@ -224,12 +266,12 @@ public class ForgotPasswords extends javax.swing.JFrame {
     }
 
     private boolean emailValidation() {
-        if (jTextField1.getText().isEmpty()) {
+        if (jTextField2.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter your email address", "Warning", 2);
             return false;
         }
-        if (!jTextField1.getText().matches("^.+@.+\\..+$")) {
-            JOptionPane.showMessageDialog(this, "Phone is to short", "Warning", 2);
+        if (!jTextField2.getText().matches("^.+@.+\\..+$")) {
+            JOptionPane.showMessageDialog(this, "Invalid email address", "Warning", 2);
             return false;
         }
         return true;
@@ -265,7 +307,7 @@ public class ForgotPasswords extends javax.swing.JFrame {
         xx = evt.getX();
         xy = evt.getY();
     }//GEN-LAST:event_jPanel3MousePressed
-
+ 
     private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
@@ -275,6 +317,31 @@ public class ForgotPasswords extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+       
+        jPasswordField1.setEchoChar((char) 0);
+        jLabel1.setVisible(false);
+        jLabel4.setVisible(true);
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        if(emailValidation()){if(fg.isEmailExist(jTextField2.getText())){
+        jTextField2.setBackground(notEdit);
+        jTextField2.setEditable(false);}}
+        jTextField3.setBackground(edit);
+        jTextField3.setEditable(true);
+        jPasswordField1.setBackground(edit);
+        jPasswordField1.setEditable(true);
+        btnSave.setEnabled(true);
+        
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+       jPasswordField1.setEchoChar('*');
+        jLabel8.setVisible(true);
+        jLabel9.setVisible(false);
+    }//GEN-LAST:event_jLabel9MouseClicked
 
     /**
      * @param args the command line arguments
@@ -321,12 +388,15 @@ public class ForgotPasswords extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnSave;
     public static javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel14;
     public static javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel3;
     public static javax.swing.JLabel jLabel4;
     public static javax.swing.JLabel jLabel5;
     public static javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     public static javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
     public static javax.swing.JTextField jTextField1;
