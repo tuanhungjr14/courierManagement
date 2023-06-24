@@ -114,13 +114,13 @@ public class UserDashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel19.setText("AZ COURIER SERVICE");
 
-        userEmail.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        userEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         userEmail.setText("user@gmail.com");
 
-        jLabel20.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel20.setText("Log out");
         jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -159,7 +159,7 @@ public class UserDashboard extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(255, 153, 51));
 
-        jLabel17.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Dashboard");
 
@@ -185,7 +185,7 @@ public class UserDashboard extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(42, 58, 73));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 120, 138));
         jLabel1.setText("Acount");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -224,7 +224,7 @@ public class UserDashboard extends javax.swing.JFrame {
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel13.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(102, 120, 138));
         jLabel13.setText("Track Order");
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -285,7 +285,7 @@ public class UserDashboard extends javax.swing.JFrame {
         jPanel20.setBackground(new java.awt.Color(42, 58, 73));
         jPanel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel22.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(102, 120, 138));
         jLabel22.setText("New Delivery");
         jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -317,10 +317,10 @@ public class UserDashboard extends javax.swing.JFrame {
 
         jPanel15.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 270, 670));
 
-        jLabel23.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel23.setText("My Statistics");
 
-        jLabel24.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel24.setText("Total Categories :");
         jLabel24.setToolTipText("");
 
@@ -345,7 +345,7 @@ public class UserDashboard extends javax.swing.JFrame {
                 .addComponent(jLabel23)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel24)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         jPanel15.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 980, 170));
