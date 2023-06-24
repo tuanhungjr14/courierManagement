@@ -182,6 +182,7 @@ public class StorageViewCreate extends javax.swing.JFrame {
         String storage_name = jTextField1.getText();
         String storage_address = jTextArea1.getText();
         newStorage.createStorage( storage_name, storage_address);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -193,7 +194,7 @@ public class StorageViewCreate extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
-        System.exit(0);
+        this.dispose();
         
     }//GEN-LAST:event_jLabel15MouseClicked
 
