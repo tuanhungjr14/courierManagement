@@ -1,6 +1,7 @@
 
 package employee;
 
+import admin.TrackOdrAdmin;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -359,13 +360,13 @@ public class EmployeeDashboard extends javax.swing.JFrame {
 
         jLabel30.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(102, 120, 138));
-        jLabel30.setText("Take More Orders");
+        jLabel30.setText("Change Order Status");
         jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel30MouseClicked(evt);
             }
         });
-        jPanel24.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 140, 30));
+        jPanel24.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 160, 30));
 
         jPanel25.setBackground(new java.awt.Color(42, 58, 73));
         jPanel25.setForeground(new java.awt.Color(153, 153, 153));
@@ -456,7 +457,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jLabel13.setForeground(textSelectionColor);
         
         
-        TrackOdrEmployee trackord = new TrackOdrEmployee();
+        TrackOdrAdmin trackord = new TrackOdrAdmin();
         trackord.setVisible(true);
         trackord.pack();
     }//GEN-LAST:event_jLabel13MouseClicked

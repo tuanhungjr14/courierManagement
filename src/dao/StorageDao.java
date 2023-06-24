@@ -123,7 +123,7 @@ public class StorageDao {
     public static void main(String[] args) {
         // Test tạo mới storage
         StorageDao storageDao = new StorageDao();
-        storageDao.createStorage(2, "Storage 1", "123 Main Street");
+        storageDao.createStorage("Storage 1", "123 Main Street");
 
         // Test đọc thông tin storage
         storageDao.readStorage(1);

@@ -90,6 +90,41 @@ public class OrderController {
         }
     }
 
+    public void findOrder(JTable table, int statusId, int userId) {
+        try {
+            String sql = """
+                         SELECT *
+                         FROM orders o
+                         JOIN delivery_history dh ON o.order_id = dh.order_id
+                         JOIN status s ON s.status_id = dh.status_id
+                         JOIN storage st ON st.storage_id = dh.storage_id
+                         WHERE dh.status_id = ? and o.user_id = ? """;
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, statusId);
+            ps.setInt(2, userId);
+            rs = ps.executeQuery();
+            System.out.println("vao day chuawsssss");
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            Object[] row;
+            while (rs.next()) {
+                row = new Object[10];
+                row[0] = rs.getInt(1);
+                row[1] = rs.getInt(3);
+                row[2] = rs.getTimestamp(4);
+                row[3] = rs.getString(5);
+                row[4] = rs.getString(6);
+                row[5] = rs.getString(7);
+                row[6] = rs.getTimestamp(10);
+                row[7] = rs.getString(14);
+                row[8] = rs.getString(16);
+                row[9] = rs.getString(17);
+                model.addRow(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PackageTypeDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public static void main(String[] args) {
 //        OrderController orderController = new OrderController();
         // Test tạo đơn hàng mới với gói hàng

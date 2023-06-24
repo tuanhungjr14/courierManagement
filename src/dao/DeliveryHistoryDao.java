@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,7 +26,7 @@ public class DeliveryHistoryDao {
     ResultSet rs;
 
     // Tạo mới delivery history
-    public void createDeliveryHistory( int statusId, Timestamp deliveryTime, int storageId, int orderId) {
+    public void createDeliveryHistory(int statusId, Timestamp deliveryTime, int storageId, int orderId) {
         String sql = "INSERT INTO delivery_history ( status_id, delivery_time, storage_id, order_id) VALUES (?, ?, ?, ?)";
         try {
             ps = con.prepareStatement(sql);
@@ -82,11 +83,29 @@ public class DeliveryHistoryDao {
             ps.setInt(5, deliveryId);
 
             if (ps.executeUpdate() > 0) {
-                System.out.println("Delivery history updated successfully.");
+                JOptionPane.showMessageDialog(null, "Delivery history updated successfully.");
             } else {
-                System.out.println("Delivery history with delivery_id " + deliveryId + " not found.");
+                JOptionPane.showMessageDialog(null, "Delivery history with delivery_id " + deliveryId + " not found.");
             }
         } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void updateDeliveryHistory(int deliveryId, int statusId) {
+        String sql = "UPDATE delivery_history SET status_id = ? WHERE delivery_id = ?";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, statusId);
+            ps.setInt(2, deliveryId);
+            System.out.println(ps);
+            if (ps.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(null, "Delivery history updated successfully.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Delivery history with delivery_id " + deliveryId + " not found.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Delivery history with delivery_id " + deliveryId + " not found.");
             ex.printStackTrace();
         }
     }
@@ -99,9 +118,9 @@ public class DeliveryHistoryDao {
             ps.setInt(1, deliveryId);
 
             if (ps.executeUpdate() > 0) {
-                System.out.println("Delivery history deleted successfully.");
+                JOptionPane.showMessageDialog(null, "Delivery history deleted successfully.");
             } else {
-                System.out.println("Delivery history with delivery_id " + deliveryId + " not found.");
+                JOptionPane.showMessageDialog(null, "Delivery history with delivery_id " + deliveryId + " not found.");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
