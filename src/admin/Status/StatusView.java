@@ -21,7 +21,7 @@ public class StatusView extends javax.swing.JFrame {
 
     public StatusView() {
         initComponents();
-        localStatus.readStatus(WIDTH);
+        localStatus.readAllStatusTypes(jTable1);
     }
 
     /**
@@ -191,7 +191,7 @@ public class StatusView extends javax.swing.JFrame {
         int localId = (int) model.getValueAt(rowIndex, 0);
         localStatus.updateStatus(localId, status);
         model.setRowCount(0);
-        localStatus.readStatus(jTable1);
+        localStatus.readAllStatusTypes(jTable1);
 
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -201,7 +201,7 @@ public class StatusView extends javax.swing.JFrame {
         int localId = (int) model.getValueAt(rowIndex, 0);
         localStatus.deleteStatus(localId);
         model.setRowCount(0);
-        localStatus.readStatus(jTable1);
+        localStatus.readAllStatusTypes(jTable1);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked

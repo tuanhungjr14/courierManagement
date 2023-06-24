@@ -186,6 +186,7 @@ public class CustomerAddresssView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        
         String address = jTextField1.getText();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         rowIndex = jTable1.getSelectedRow();

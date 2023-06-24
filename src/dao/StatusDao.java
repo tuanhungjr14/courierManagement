@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
@@ -27,15 +28,14 @@ public class StatusDao {
     ResultSet rs;
 
     // Tạo mới status
-    public void createStatus(int statusId, String statusName) {
-        String sql = "INSERT INTO status (status_id, status_name) VALUES (?, ?)";
+    public void createStatus(String statusName) {
+        String sql = "INSERT INTO status ( status_name) VALUES ( ?)";
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, statusId);
-            ps.setString(2, statusName);
+            ps.setString(1, statusName);
 
             if (ps.executeUpdate() > 0) {
-                System.out.println("New status added successfully.");
+                 JOptionPane.showMessageDialog( null,"New status added successfully.");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -144,9 +144,9 @@ public class StatusDao {
         // Test tạo mới status
         int statusId = 1;
         String statusName = "Đang vận chuyển";
-        statusDao.createStatus(1, "Chuẩn bị hàng");
-        statusDao.createStatus(2, "Đang vận chuyển");
-        statusDao.createStatus(3, "Thành công");
+//        statusDao.createStatus(1, "Chuẩn bị hàng");
+//        statusDao.createStatus(2, "Đang vận chuyển");
+//        statusDao.createStatus(3, "Thành công");
 
 //        // Test đọc thông tin status
 //        statusDao.readStatus(statusId);

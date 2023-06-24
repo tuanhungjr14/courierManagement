@@ -76,6 +76,7 @@ public class ChangeOrderStatusView extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 0));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -242,6 +243,7 @@ public class ChangeOrderStatusView extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked

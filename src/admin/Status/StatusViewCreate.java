@@ -161,7 +161,7 @@ public class StatusViewCreate extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String statusName = jTextField1.getText();
-        localStatus.createStatus(WIDTH, statusName);
+        localStatus.createStatus( statusName);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
