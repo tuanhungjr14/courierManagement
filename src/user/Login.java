@@ -1,7 +1,10 @@
 package user;
 
+import LocalStorage.LocalStorage;
 import admin.AdminDashboard;
 import connection.MyConnection;
+import dao.EmployeeDao;
+import dao.UserDao;
 import employee.EmployeeDashboard;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,7 +16,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 
-
 /**
  *
  * @author tuan1
@@ -24,7 +26,10 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     private ButtonGroup bg = new ButtonGroup();
-    
+    LocalStorage localStorage = new LocalStorage();
+    UserDao user = new UserDao();
+    EmployeeDao employee = new EmployeeDao();
+
     public Login() {
         initComponents();
         init();
@@ -210,7 +215,7 @@ private void init() {
         bg.add(jRadioButton3);
         jRadioButton1.setSelected(true);
     }
-    
+
     private boolean isEmpty() {
         if (jTextField1.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Email is required", "Warning", 2);
@@ -264,10 +269,10 @@ private void init() {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (isEmpty()) {
             String email = jTextField1.getText();
-            
+
             String password = String.valueOf(jPasswordField1.getPassword());
             if (jRadioButton1.isSelected()) {
-                
+
                 try {
                     PreparedStatement ps;
                     Connection con = MyConnection.getConnetion();
@@ -276,6 +281,7 @@ private void init() {
                     ps.setString(2, password);
                     ResultSet rs = ps.executeQuery();
                     if (rs.next()) {
+                        localStorage.saveEmployeeId(employee.getUserId(email));
                         EmployeeDashboard ed = new EmployeeDashboard();
                         ed.setVisible(true);
                         ed.pack();
@@ -296,6 +302,7 @@ private void init() {
                     ps.setString(2, password);
                     ResultSet rs = ps.executeQuery();
                     if (rs.next()) {
+                        localStorage.saveUserId(user.getUserId(email));
                         UserDashboard ud = new UserDashboard();
                         ud.setVisible(true);
                         ud.pack();
@@ -332,13 +339,13 @@ private void init() {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-          jPasswordField1.setEchoChar((char) 0);
+        jPasswordField1.setEchoChar((char) 0);
         jLabel1.setVisible(false);
         jLabel4.setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-       jPasswordField1.setEchoChar('*');
+        jPasswordField1.setEchoChar('*');
         jLabel1.setVisible(true);
         jLabel4.setVisible(false);
     }//GEN-LAST:event_jLabel4MouseClicked

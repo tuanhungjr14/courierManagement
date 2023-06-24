@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -23,16 +25,16 @@ public class DeliveryHistoryDao {
     ResultSet rs;
 
     // Tạo mới delivery history
-    public void createDeliveryHistory(int deliveryId, int statusId, Timestamp deliveryTime, int storageId, int orderId) {
-        String sql = "INSERT INTO delivery_history (delivery_id, status_id, delivery_time, storage_id, order_id) VALUES (?, ?, ?, ?, ?)";
+    public void createDeliveryHistory( int statusId, Timestamp deliveryTime, int storageId, int orderId) {
+        String sql = "INSERT INTO delivery_history ( status_id, delivery_time, storage_id, order_id) VALUES (?, ?, ?, ?)";
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, deliveryId);
-            ps.setInt(2, statusId);
-            ps.setTimestamp(3, deliveryTime);
-            ps.setInt(4, storageId);
-            ps.setInt(5, orderId);
+            ps.setInt(1, statusId);
+            ps.setTimestamp(2, deliveryTime);
+            ps.setInt(3, storageId);
+            ps.setInt(4, orderId);
 
+            System.out.println(ps);
             if (ps.executeUpdate() > 0) {
                 System.out.println("New delivery history added successfully.");
             }
@@ -108,11 +110,12 @@ public class DeliveryHistoryDao {
 
     public static void main(String[] args) {
         // Test tạo mới delivery history
-        DeliveryHistoryDao deliveryHistoryDao = new DeliveryHistoryDao();
-        deliveryHistoryDao.createDeliveryHistory(1, 1, Timestamp.valueOf(LocalDateTime.now()), 1,1);
-
+//        DeliveryHistoryDao deliveryHistoryDao = new DeliveryHistoryDao();
+//        Timestamp now = new Timestamp(System.currentTimeMillis());
+//        System.out.println(now);
+//        deliveryHistoryDao.createDeliveryHistory(2, 2, now, 2, 4);
         // Test đọc thông tin delivery history
-        deliveryHistoryDao.readDeliveryHistory(1);
+//        deliveryHistoryDao.readDeliveryHistory(1);
 
 //        // Test cập nhật thông tin delivery history
 //        deliveryHistoryDao.updateDeliveryHistory(1, 2, Timestamp.valueOf(LocalDateTime.now()), 2,1);

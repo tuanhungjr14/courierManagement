@@ -208,6 +208,6 @@ public class UserDao {
         } catch (SQLException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
+
 }

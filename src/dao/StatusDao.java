@@ -13,6 +13,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class StatusDao {
 
@@ -57,6 +62,45 @@ public class StatusDao {
         }
     }
 
+    public void readAllStatusTypes(JTable table) {
+
+        try {
+            String sql = "SELECT * FROM status";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            Object[] row;
+            while (rs.next()) {
+                row = new Object[2];
+                row[0] = rs.getInt(1);
+                row[1] = rs.getString(2);
+                model.addRow(row);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StatusDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public String[] readAllStatusTypes() throws SQLException {
+        ArrayList<String> status = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM status";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String statusName = rs.getString(2);
+                String formattedPackage = id + ". " + statusName;
+                status.add(formattedPackage);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PackageTypeDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return status.toArray(new String[0]);
+    }
     // Cập nhật thông tin status
     public void updateStatus(int statusId, String statusName) {
         String sql = "UPDATE status SET status_name = ? WHERE status_id = ?";
@@ -112,6 +156,5 @@ public class StatusDao {
 //
 //        // Test xóa status
 //        statusDao.deleteStatus(statusId);
-
     }
 }
