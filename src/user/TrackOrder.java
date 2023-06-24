@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import admin.AdminDashboard;
 import Controller.OrderController;
+import LocalStorage.LocalStorage;
 import dao.DeliveryHistoryDao;
 import dao.PackageTypeDao;
 import dao.StatusDao;
@@ -228,7 +229,11 @@ public class TrackOrder extends javax.swing.JFrame {
         int dotIndex = selectValue.indexOf(".");
         String numberString = selectValue.substring(0, dotIndex);
         int statusId = Integer.parseInt(numberString);
-        orderController.findOrder(jTable1, statusId,2);
+
+        LocalStorage localStorage = new LocalStorage();
+        int localUserId = localStorage.readUserId();
+
+        orderController.findOrder(jTable1, statusId, localUserId);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
