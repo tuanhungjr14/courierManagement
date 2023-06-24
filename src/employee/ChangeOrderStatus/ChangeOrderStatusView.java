@@ -1,30 +1,55 @@
-package admin;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package employee.ChangeOrderStatus;
 
+import admin.AdminDashboard;
 import Controller.OrderController;
+import dao.DeliveryHistoryDao;
 import dao.PackageTypeDao;
 import dao.StatusDao;
 import java.awt.Color;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
-import user.Login;
 
-public class TrackOdrAdmin extends javax.swing.JFrame {
+/**
+ *
+ * @author KhoaTran
+ */
+public class ChangeOrderStatusView extends javax.swing.JFrame {
 
+    /**
+     * Creates new form ChangeOrderStatusView
+     */
     Color textPrimaryColor = new Color(102, 120, 138);
     Color primaryColor = new Color(42, 58, 73);
     int xx, xy;
+    int rowIndex = -1;
 
     PackageTypeDao packageType = new PackageTypeDao();
     OrderController orderController = new OrderController();
+    DeliveryHistoryDao deliHistory = new DeliveryHistoryDao();
 
-    public TrackOdrAdmin() {
+    public ChangeOrderStatusView() {
         initComponents();
         addStatusToComboBox(jComboBox1);
-        DefaultTableModel packageTypeTableModel = (DefaultTableModel) jTable1.getModel();
+        addStatusToComboBox(jComboBox2);
 
+        DefaultTableModel packageTypeTableModel = (DefaultTableModel) jTable1.getModel();
+    }
+
+    public void addStatusToComboBox(JComboBox<String> comboBox) {
+        StatusDao statusDao = new StatusDao();
+        try {
+            String[] listStatus = statusDao.readAllStatusTypes();
+            for (String status : listStatus) {
+                comboBox.addItem(status);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -44,14 +69,12 @@ public class TrackOdrAdmin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         jPanel5.setBackground(new java.awt.Color(0, 153, 0));
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -94,11 +117,16 @@ public class TrackOdrAdmin extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel1.setText("TRACK ORDER");
+        jLabel1.setText("CHANGE ORDER STATUS");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
@@ -112,25 +140,56 @@ public class TrackOdrAdmin extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel3.setText("Update order id:");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(255, 204, 51));
+        jButton2.setText("Update");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(476, 476, 476)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(456, 456, 456)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1393, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1393, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(613, 613, 613)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(220, 220, 220))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,19 +197,24 @@ public class TrackOdrAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jComboBox1)
-                        .addGap(3, 3, 3))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox1)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                        .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(39, 39, 39)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,56 +229,7 @@ public class TrackOdrAdmin extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    public void addPackageTypesToComboBox(JComboBox<String> comboBox) {
-        PackageTypeDao packageTypeDao = new PackageTypeDao();
-        try {
-            String[] packageTypes = packageTypeDao.readAllPackageTypes();
-            for (String packageType : packageTypes) {
-                comboBox.addItem(packageType);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public void addStatusToComboBox(JComboBox<String> comboBox) {
-        StatusDao statusDao = new StatusDao();
-        try {
-            String[] listStatus = statusDao.readAllStatusTypes();
-            for (String status : listStatus) {
-                comboBox.addItem(status);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        for (double i = 0.1; i < 1.0; i += 0.1) {
-            String s = "" + i;
-            float f = Float.parseFloat(s);
-            this.setOpacity(f);
-            try {
-                Thread.sleep(40);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_formWindowOpened
-
-    private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
-        xx = evt.getX();
-        xy = evt.getY();
-    }//GEN-LAST:event_jPanel5MousePressed
-
-    private void jPanel5MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseDragged
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x - xx, y - xy);
-    }//GEN-LAST:event_jPanel5MouseDragged
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         setVisible(false);
@@ -235,6 +250,39 @@ public class TrackOdrAdmin extends javax.swing.JFrame {
         orderController.findOrder(jTable1, id);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jPanel5MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_jPanel5MouseDragged
+
+    private void jPanel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MousePressed
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_jPanel5MousePressed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        rowIndex = jTable1.getSelectedRow();
+        jTextField1.setText(model.getValueAt(rowIndex, 0).toString());
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        rowIndex = jTable1.getSelectedRow();
+        String selectValue = (String) jComboBox2.getSelectedItem();
+        int dotIndex = selectValue.indexOf(".");
+        String numberString = selectValue.substring(0, dotIndex);
+        int statusId = Integer.parseInt(numberString);
+        int localDeliHisId = Integer.parseInt(model.getValueAt(rowIndex, 7).toString());
+        deliHistory.updateDeliveryHistory(localDeliHisId, statusId);
+        model.setRowCount(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -252,32 +300,36 @@ public class TrackOdrAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TrackOdrAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChangeOrderStatusView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TrackOdrAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChangeOrderStatusView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TrackOdrAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChangeOrderStatusView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TrackOdrAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChangeOrderStatusView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TrackOdrAdmin().setVisible(true);
+                new ChangeOrderStatusView().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel14;
+    public static javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
