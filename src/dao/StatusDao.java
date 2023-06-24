@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JTable;
 
 public class StatusDao {
 
@@ -156,5 +157,9 @@ public class StatusDao {
 //
 //        // Test xóa status
 //        statusDao.deleteStatus(statusId);
+    }
+
+    public void readStatus(JTable jTable1) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

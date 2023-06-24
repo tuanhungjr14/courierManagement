@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,13 +24,12 @@ public class StorageDao {
     ResultSet rs;
 
     // Tạo mới storage
-    public void createStorage(int storageId, String name, String address) {
-        String sql = "INSERT INTO storage (storage_id, storage_name, storage_address) VALUES (?, ?, ?)";
+    public void createStorage(String name, String address) {
+        String sql = "INSERT INTO storage ( storage_name, storage_address) VALUES (?, ?)";
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, storageId);
-            ps.setString(2, name);
-            ps.setString(3, address);
+            ps.setString(1, name);
+            ps.setString(2, address);
 
             if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "Storage  added  successfully");
@@ -60,8 +61,30 @@ public class StorageDao {
             ex.printStackTrace();
         }
     }
-    // Cập nhật thông tin storage
 
+    public void readAllStorage(JTable table) {
+        try {
+            String sql = "SELECT * FROM storage";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            model.setRowCount(0); // Clear existing rows
+
+            while (rs.next()) {
+                int id = rs.getInt("storage_id");
+                String name = rs.getString("storage_name");
+                String address = rs.getString("storage_address");
+
+                Object[] row = {id, name, address};
+                model.addRow(row);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    // Cập nhật thông tin storage
     public void updateStorage(int storageId, String name, String address) {
         String sql = "UPDATE storage SET storage_name = ?, storage_address = ? WHERE storage_id = ?";
         try {
@@ -106,7 +129,7 @@ public class StorageDao {
         storageDao.readStorage(1);
 
 //        // Test cập nhật thông tin storage
-        storageDao.updateStorage(1, "Updated Storage 1", "456 New Street");
+//        storageDao.updateStorage(1, "Updated Storage 1", "456 New Street");
 //
 //        // Test xóa storage
 //        storageDao.deleteStorage(1);
