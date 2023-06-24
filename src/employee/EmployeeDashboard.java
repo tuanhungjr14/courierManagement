@@ -2,6 +2,7 @@
 package employee;
 
 import admin.TrackOdrAdmin;
+import employee.ChangeOrderStatus.ChangeOrderStatusView;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -484,9 +485,9 @@ public class EmployeeDashboard extends javax.swing.JFrame {
         jLabel30.setForeground(textSelectionColor);
         jLabel31.setVisible(true);
         jLabel32.setVisible(false);
-        TakeMoreOdr takemore = new TakeMoreOdr();
-        takemore.setVisible(true);
-        takemore.pack();
+        ChangeOrderStatusView changeOrderStatus = new ChangeOrderStatusView();
+        changeOrderStatus.setVisible(true);
+//        takemore.pack();
     }//GEN-LAST:event_jLabel30MouseClicked
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
