@@ -97,7 +97,15 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, 240, 36));
+
+        jTextField1.setText("h");
         jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 382, -1));
+
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 382, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -349,6 +357,10 @@ private void init() {
         jLabel1.setVisible(true);
         jLabel4.setVisible(false);
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments

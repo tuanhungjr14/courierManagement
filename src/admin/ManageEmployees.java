@@ -118,7 +118,7 @@ public class ManageEmployees extends javax.swing.JFrame {
         jPanel1.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 293, -1));
 
         btnUpdate.setBackground(new java.awt.Color(255, 153, 0));
-        btnUpdate.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +129,7 @@ public class ManageEmployees extends javax.swing.JFrame {
         jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 140, 44));
 
         btnClear.setBackground(new java.awt.Color(255, 153, 51));
-        btnClear.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        btnClear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnClear.setForeground(new java.awt.Color(255, 255, 255));
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -139,32 +139,32 @@ public class ManageEmployees extends javax.swing.JFrame {
         });
         jPanel1.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, 300, 44));
 
-        jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Username");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 120, 91, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Email");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 186, 74, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("ID");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 54, 37, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Phone");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 63, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Password");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 258, 83, -1));
 
-        jLabel8.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Address");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 74, -1));
@@ -189,7 +189,7 @@ public class ManageEmployees extends javax.swing.JFrame {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, -1, -1));
 
         btnDelete.setBackground(new java.awt.Color(255, 153, 51));
-        btnDelete.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -227,7 +227,7 @@ public class ManageEmployees extends javax.swing.JFrame {
         jLabel11.setText("------------------------------------------------------------------------------------------------------------------------------------------------");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 720, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Search");
         jLabel12.setToolTipText("");

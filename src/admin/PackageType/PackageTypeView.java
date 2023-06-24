@@ -74,7 +74,7 @@ public class PackageTypeView extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnUpdate.setBackground(new java.awt.Color(255, 153, 0));
-        btnUpdate.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +85,7 @@ public class PackageTypeView extends javax.swing.JFrame {
         jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 180, 44));
 
         btnCreate.setBackground(new java.awt.Color(255, 102, 0));
-        btnCreate.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        btnCreate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCreate.setForeground(new java.awt.Color(255, 255, 255));
         btnCreate.setText("Create new");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -95,18 +95,18 @@ public class PackageTypeView extends javax.swing.JFrame {
         });
         jPanel1.add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 170, 44));
 
-        jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Title");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 130, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Description");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 160, -1));
 
         btnDelete.setBackground(new java.awt.Color(255, 0, 0));
-        btnDelete.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +151,7 @@ public class PackageTypeView extends javax.swing.JFrame {
         jLabel11.setText("------------------------------------------------------------------------------------------------------------------------------------------------");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 720, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Search");
         jLabel12.setToolTipText("");
@@ -164,7 +164,7 @@ public class PackageTypeView extends javax.swing.JFrame {
         });
         jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 440, 300, 30));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setText("CLASSIFICATION OF DELIVERY PACKAGE");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
@@ -177,7 +177,7 @@ public class PackageTypeView extends javax.swing.JFrame {
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 540, 170));
 
         btnClear1.setBackground(new java.awt.Color(255, 153, 51));
-        btnClear1.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        btnClear1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnClear1.setForeground(new java.awt.Color(255, 255, 255));
         btnClear1.setText("Clear");
         btnClear1.addActionListener(new java.awt.event.ActionListener() {

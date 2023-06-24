@@ -173,7 +173,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(255, 153, 51));
 
-        jLabel17.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Dashboard");
 
@@ -199,7 +199,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(42, 58, 73));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 120, 138));
         jLabel1.setText("Storage Manager");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -242,7 +242,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel13.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(102, 120, 138));
         jLabel13.setText("Track Order");
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -308,7 +308,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel20.setBackground(new java.awt.Color(42, 58, 73));
         jPanel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel22.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(102, 120, 138));
         jLabel22.setText("Package Type Manager");
         jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -345,7 +345,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel22.setBackground(new java.awt.Color(42, 58, 73));
         jPanel22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel27.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(102, 120, 138));
         jLabel27.setText("Status Manager");
         jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -382,7 +382,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel24.setBackground(new java.awt.Color(42, 58, 73));
         jPanel24.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel30.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(102, 120, 138));
         jLabel30.setText("Order Manager");
         jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -419,7 +419,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel26.setBackground(new java.awt.Color(42, 58, 73));
         jPanel26.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel34.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel34.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(102, 120, 138));
         jLabel34.setText("Add Employee");
         jLabel34.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -456,7 +456,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel28.setBackground(new java.awt.Color(42, 58, 73));
         jPanel28.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel37.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(102, 120, 138));
         jLabel37.setText("User Manager");
         jLabel37.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -492,10 +492,10 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jPanel15.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 270, 670));
 
-        jLabel23.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel23.setText("My Statistics");
 
-        jLabel24.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel24.setText("Total Categories :");
         jLabel24.setToolTipText("");
 
@@ -520,7 +520,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addComponent(jLabel23)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel24)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         jPanel15.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 980, 170));
