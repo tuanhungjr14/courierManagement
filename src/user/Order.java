@@ -25,22 +25,23 @@ public class Order extends javax.swing.JFrame {
      */
     Color textPrimaryColor = new Color(102, 120, 138);
     Color primaryColor = new Color(42, 58, 73);
-
-    OrderDao order = new OrderDao();
-    PackageTypeDao packageType = new PackageTypeDao();
+    OrderController order = new OrderController();
+    int finalPrice = 0;
+    
     LocalStorage localStorage = new LocalStorage();
-
+    
     public Order() {
         initComponents();
         jComboBox2.addItemListener(new ItemListener() {
+            @Override
             public void itemStateChanged(ItemEvent event) {
                 updateDayComboBox();
             }
         });
         addPackageTypesToComboBox(jComboBox5);
-
+        
     }
-
+    
     public void addPackageTypesToComboBox(JComboBox<String> comboBox) {
         PackageTypeDao packageTypeDao = new PackageTypeDao();
         try {
@@ -52,10 +53,10 @@ public class Order extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
-
+    
     private void updateDayComboBox() {
         String selectedMonth = (String) jComboBox2.getSelectedItem();
-
+        
         if (selectedMonth.equals("February")) {
             jComboBox1.removeItem("30");
             jComboBox1.removeItem("31");
@@ -157,6 +158,8 @@ public class Order extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jComboBox9 = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -270,7 +273,7 @@ public class Order extends javax.swing.JFrame {
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel17.setText("Receiver Address:");
+        jLabel17.setText("Pickup Address:");
 
         jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang", "Bà Rịa-Vũng Tàu", "Bạc Liêu", "Bắc Giang", "Bắc Kạn", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái." }));
         jComboBox9.addActionListener(new java.awt.event.ActionListener() {
@@ -278,6 +281,18 @@ public class Order extends javax.swing.JFrame {
                 jComboBox9ActionPerformed(evt);
             }
         });
+
+        jButton3.setBackground(new java.awt.Color(255, 204, 0));
+        jButton3.setText("Calculate");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel18.setText("Note: Total price = weight * size * delivery type * distance");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -310,28 +325,31 @@ public class Order extends javax.swing.JFrame {
                                                 .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel8))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel14)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel16)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel15)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(137, 137, 137)))
                         .addGap(113, 113, 113))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -360,8 +378,10 @@ public class Order extends javax.swing.JFrame {
                                         .addComponent(jComboBox6, 0, 204, Short.MAX_VALUE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel12)
-                                        .addGap(47, 47, 47)
-                                        .addComponent(jTextField5)))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton3)))))
                         .addGap(91, 91, 91))))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -381,10 +401,11 @@ public class Order extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -417,7 +438,8 @@ public class Order extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jLabel12)
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -428,7 +450,8 @@ public class Order extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
                 .addGap(36, 36, 36))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
@@ -485,15 +508,17 @@ public class Order extends javax.swing.JFrame {
         int type_id = Integer.parseInt(type_id_pre.substring(0, type_id_pre.indexOf(".")));
         String content = jTextArea1.getText();
         String deliveryType = (String) jComboBox6.getSelectedItem();
-        String cost = "60";
         Timestamp pickupTime = Timestamp.valueOf(jComboBox3.getSelectedItem() + "-" + jComboBox2.getSelectedItem() + "-" + jComboBox1.getSelectedItem() + " 00:00:00");
         String customerName = jTextField2.getText();
         String customerAddress = jTextField1.getText();
         String customerPhone = jTextField3.getText();
-        int newOrderId = newOrder.createOrderWithPackage(localUserId, weight, size, type_id, content, deliveryType, cost, pickupTime, customerName, customerAddress, customerPhone);
-        if(newOrderId > 0) {
+        String pickupLocation = (String) jComboBox9.getSelectedItem();
+        String destination = (String) jComboBox8.getSelectedItem();
+        finalPrice = order.finalPrice(Integer.parseInt(weight), size, deliveryType, pickupLocation, destination);
+        int newOrderId = newOrder.createOrderWithPackage(localUserId, weight, size, type_id, content, deliveryType, Integer.toString(finalPrice), pickupTime, customerName, customerAddress, customerPhone);
+        if (newOrderId > 0) {
             DeliveryHistoryDao deliHistory = new DeliveryHistoryDao();
-            deliHistory.createDeliveryHistory( 1, pickupTime, 1, newOrderId);
+            deliHistory.createDeliveryHistory(1, pickupTime, 1, newOrderId);
             this.dispose();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -505,6 +530,18 @@ public class Order extends javax.swing.JFrame {
     private void jComboBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox9ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        int weight = Integer.parseInt((String) jComboBox7.getSelectedItem());
+        String size = (String) jComboBox4.getSelectedItem();
+        String deliveryType = (String) jComboBox6.getSelectedItem();
+        String pickupLocation = (String) jComboBox9.getSelectedItem();
+        String destination = (String) jComboBox8.getSelectedItem();
+        finalPrice = order.finalPrice(weight, size, deliveryType, pickupLocation, destination);
+        jTextField5.setText(Integer.toString(finalPrice));
+        System.out.println("done done done");
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -544,6 +581,7 @@ public class Order extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -562,6 +600,7 @@ public class Order extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
