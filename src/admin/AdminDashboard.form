@@ -225,7 +225,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8a" green="78" red="66" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Acount"/>
+                    <Property name="text" type="java.lang.String" value="Storage Manager"/>
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel1MouseClicked"/>
@@ -502,7 +502,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8a" green="78" red="66" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Manage Employee"/>
+                    <Property name="text" type="java.lang.String" value="Package Type Manager"/>
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel22MouseClicked"/>
@@ -512,7 +512,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="120" y="10" width="150" height="30"/>
+                      <AbsoluteConstraints x="120" y="10" width="180" height="30"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -602,7 +602,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8a" green="78" red="66" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Cancelled Order"/>
+                    <Property name="text" type="java.lang.String" value="Status Manager"/>
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel27MouseClicked"/>
@@ -702,7 +702,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8a" green="78" red="66" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Completed Order"/>
+                    <Property name="text" type="java.lang.String" value="Order Manager"/>
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel30MouseClicked"/>
@@ -902,7 +902,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8a" green="78" red="66" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Manage User"/>
+                    <Property name="text" type="java.lang.String" value="User Manager"/>
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel37MouseClicked"/>

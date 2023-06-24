@@ -1,5 +1,8 @@
 package admin;
 
+import admin.PackageType.PackageTypeView;
+import admin.Status.StatusView;
+import admin.storage.StorageView;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +23,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     Color sideColor = new Color(64, 194, 150);
     Color textSelectionColor = new Color(255, 255, 255);
     int xx, xy;
-
+    
     public AdminDashboard() {
         initComponents();
         ImageIcon icon = new ImageIcon("src/icons/AzDeli.png");
@@ -198,7 +201,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 120, 138));
-        jLabel1.setText("Acount");
+        jLabel1.setText("Storage Manager");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -307,13 +310,13 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jLabel22.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(102, 120, 138));
-        jLabel22.setText("Manage Employee");
+        jLabel22.setText("Package Type Manager");
         jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel22MouseClicked(evt);
             }
         });
-        jPanel20.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 150, 30));
+        jPanel20.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 180, 30));
 
         jPanel21.setBackground(new java.awt.Color(42, 58, 73));
         jPanel21.setForeground(new java.awt.Color(153, 153, 153));
@@ -344,7 +347,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jLabel27.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(102, 120, 138));
-        jLabel27.setText("Cancelled Order");
+        jLabel27.setText("Status Manager");
         jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel27MouseClicked(evt);
@@ -381,7 +384,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jLabel30.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(102, 120, 138));
-        jLabel30.setText("Completed Order");
+        jLabel30.setText("Order Manager");
         jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel30MouseClicked(evt);
@@ -455,7 +458,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jLabel37.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(102, 120, 138));
-        jLabel37.setText("Manage User");
+        jLabel37.setText("User Manager");
         jLabel37.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel37MouseClicked(evt);
@@ -538,7 +541,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-
+        
         jPanel13.setBackground(selectionColor);
         jPanel17.setBackground(sideColor);
         jLabel13.setForeground(textSelectionColor);
@@ -554,14 +557,17 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel13MouseClicked
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
-        jPanel20.setBackground(selectionColor);
-        jPanel21.setBackground(sideColor);
-        jLabel22.setForeground(textSelectionColor);
-        jLabel25.setVisible(true);
-        jLabel26.setVisible(false);
-        Employees employees = new Employees();
-        employees.setVisible(true);
-        employees.pack();
+//        jPanel20.setBackground(selectionColor);
+//        jPanel21.setBackground(sideColor);
+//        jLabel22.setForeground(textSelectionColor);
+//        jLabel25.setVisible(true);
+//        jLabel26.setVisible(false);
+//        Employees employees = new Employees();
+//        employees.setVisible(true);
+//        employees.pack();
+
+        PackageTypeView packageType = new PackageTypeView();
+        packageType.setVisible(true);
     }//GEN-LAST:event_jLabel22MouseClicked
 
     private void jLabel20jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20jLabel4MouseClicked
@@ -573,29 +579,34 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel20jLabel4MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-
+        StorageView storageView = new StorageView();
+        storageView.setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
-        jPanel22.setBackground(selectionColor);
-        jPanel23.setBackground(sideColor);
-        jLabel27.setForeground(textSelectionColor);
-        jLabel29.setVisible(true);
-        jLabel28.setVisible(false);
-        Cancelledord cancelled = new Cancelledord();
-        cancelled.setVisible(true);
-        cancelled.pack();
+//        jPanel22.setBackground(selectionColor);
+//        jPanel23.setBackground(sideColor);
+//        jLabel27.setForeground(textSelectionColor);
+//        jLabel29.setVisible(true);
+//        jLabel28.setVisible(false);
+//        Cancelledord cancelled = new Cancelledord();
+//        cancelled.setVisible(true);
+//        cancelled.pack();
+        StatusView statusView = new StatusView();
+        statusView.setVisible(true);
     }//GEN-LAST:event_jLabel27MouseClicked
 
     private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
-        jPanel24.setBackground(selectionColor);
-        jPanel25.setBackground(sideColor);
-        jLabel30.setForeground(textSelectionColor);
-        jLabel31.setVisible(true);
-        jLabel32.setVisible(false);
-        Completedord completed = new Completedord();
-        completed.setVisible(true);
-        completed.pack();
+//        jPanel24.setBackground(selectionColor);
+//        jPanel25.setBackground(sideColor);
+//        jLabel30.setForeground(textSelectionColor);
+//        jLabel31.setVisible(true);
+//        jLabel32.setVisible(false);
+//        Completedord completed = new Completedord();
+//        completed.setVisible(true);
+//        completed.pack();
+        TrackOdrAdmin trackOrder = new TrackOdrAdmin();
+        trackOrder.setVisible(true);
     }//GEN-LAST:event_jLabel30MouseClicked
 
     private void jPanel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel17MouseClicked
