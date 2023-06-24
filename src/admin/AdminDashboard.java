@@ -655,7 +655,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel34MouseClicked
 
     private void jLabel37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel37MouseClicked
-        // TODO add your handling code here:
+        ManageUsers managerUsers = new ManageUsers();
+        managerUsers.setVisible(true);
     }//GEN-LAST:event_jLabel37MouseClicked
 
     /**

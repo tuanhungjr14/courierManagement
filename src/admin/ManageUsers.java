@@ -1,4 +1,3 @@
-
 package admin;
 
 import dao.UserDao;
@@ -21,7 +20,7 @@ public class ManageUsers extends javax.swing.JFrame {
 
     public ManageUsers() {
         initComponents();
-         usersTable();
+        usersTable();
 //        user.getUsersValue(jTable1, "");
     }
 
@@ -320,7 +319,7 @@ public class ManageUsers extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
@@ -330,10 +329,12 @@ public class ManageUsers extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        if (isEmpty()){
+        if (isEmpty()) {
             int id = Integer.parseInt(jTextField1.getText());
             user.delete(id);
             clear();
+            model.setRowCount(0);
+            user.getUsersValue(jTable1, "");
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -413,7 +414,7 @@ public class ManageUsers extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Security answer is required", "Warning", 2);
             return false;
         }
-        
+
         if (jTextField8.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Address is required", "Warning", 2);
             return false;
