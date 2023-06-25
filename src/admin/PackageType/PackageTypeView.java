@@ -57,6 +57,7 @@ public class PackageTypeView extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         btnClear1 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -187,6 +188,16 @@ public class PackageTypeView extends javax.swing.JFrame {
         });
         jPanel1.add(btnClear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 370, 160, 44));
 
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel17.setText("X");
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -247,6 +258,10 @@ public class PackageTypeView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnClear1ActionPerformed
 
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jLabel17MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -290,6 +305,10 @@ public class PackageTypeView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
