@@ -97,8 +97,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, 240, 36));
-
-        jTextField1.setText("h");
         jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 382, -1));
 
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
