@@ -1,12 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package admin.storage;
 
 import dao.StorageDao;
 import employee.EmployeeDashboard;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,8 +18,9 @@ public class StorageView extends javax.swing.JFrame {
      */
     StorageDao localStorage = new StorageDao();
     int rowIndex;
-     Color textPrimaryColor = new Color(102,120,138);
-    Color primaryColor = new Color(42,58,73);
+    Color textPrimaryColor = new Color(102, 120, 138);
+    Color primaryColor = new Color(42, 58, 73);
+
     public StorageView() {
         initComponents();
 
@@ -220,14 +219,16 @@ public class StorageView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        String name = jTextField1.getText();
-        String address = jTextArea1.getText();
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        rowIndex = jTable1.getSelectedRow();
-        int localId = (int) model.getValueAt(rowIndex, 0);
-        localStorage.updateStorage(localId, name, address);
-        model.setRowCount(0);
-        localStorage.readAllStorage(jTable1);
+        if (isEmpty()) {
+            String name = jTextField1.getText();
+            String address = jTextArea1.getText();
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            rowIndex = jTable1.getSelectedRow();
+            int localId = (int) model.getValueAt(rowIndex, 0);
+            localStorage.updateStorage(localId, name, address);
+            model.setRowCount(0);
+            localStorage.readAllStorage(jTable1);
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -257,7 +258,7 @@ public class StorageView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
-        jTable1.setModel(new DefaultTableModel(null, new Object[]{"ID","Storage name","Storage address"}));
+        jTable1.setModel(new DefaultTableModel(null, new Object[]{"ID", "Storage name", "Storage address"}));
         localStorage.getStorageValue(jTable1, jTextField4.getText());
     }//GEN-LAST:event_jTextField4KeyReleased
 
@@ -278,7 +279,7 @@ public class StorageView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateMouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-               setVisible(false);
+        setVisible(false);
         EmployeeDashboard.jPanel28.setBackground(primaryColor);
         EmployeeDashboard.jPanel29.setBackground(primaryColor);
         EmployeeDashboard.jLabel35.setForeground(textPrimaryColor);
@@ -286,9 +287,22 @@ public class StorageView extends javax.swing.JFrame {
     private void clear() {
         jTextField1.setText("");
         jTextArea1.setText("");
-        
-        
+
     }
+
+    public boolean isEmpty() {
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Title is required", "Warning", 2);
+            return false;
+        }
+        if (jTextArea1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Description is required", "Warning", 2);
+            return false;
+        }
+
+        return true;
+    }
+
     /**
      * @param args the command line arguments
      */

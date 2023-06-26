@@ -1,6 +1,4 @@
-
 package admin.PackageType;
-
 
 import dao.PackageTypeDao;
 import employee.EmployeeDashboard;
@@ -19,16 +17,15 @@ public class PackageTypeView extends javax.swing.JFrame {
      */
     PackageTypeDao packageType = new PackageTypeDao();
 
-   
     int rowIndex;
-     Color textPrimaryColor = new Color(102,120,138);
-    Color primaryColor = new Color(42,58,73);
+    Color textPrimaryColor = new Color(102, 120, 138);
+    Color primaryColor = new Color(42, 58, 73);
+
     public PackageTypeView() {
         initComponents();
-        
+
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(75);
         jTable1.getColumnModel().getColumn(1).setPreferredWidth(75);
-        
 
         packageType.readAllPackageTypes(jTable1);
     }
@@ -226,7 +223,7 @@ public class PackageTypeView extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
-jTable1.setModel(new DefaultTableModel(null, new Object[]{"ID","Title","Description"}));
+        jTable1.setModel(new DefaultTableModel(null, new Object[]{"ID", "Title", "Description"}));
         packageType.getOrderValue(jTable1, jTextField4.getText());
     }//GEN-LAST:event_jTextField4KeyReleased
 
@@ -250,33 +247,48 @@ jTable1.setModel(new DefaultTableModel(null, new Object[]{"ID","Title","Descript
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        rowIndex = jTable1.getSelectedRow();
-        int localId = (int) model.getValueAt(rowIndex, 0);
-        String localTitle = jTextField1.getText();
-        String localDescription = jTextArea1.getText();
-        packageType.updatePackageType(localId, localTitle, localDescription);
-        model.setRowCount(0);
-        packageType.readAllPackageTypes(jTable1);
+        if (isEmpty()) {
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            rowIndex = jTable1.getSelectedRow();
+            int localId = (int) model.getValueAt(rowIndex, 0);
+            String localTitle = jTextField1.getText();
+            String localDescription = jTextArea1.getText();
+            packageType.updatePackageType(localId, localTitle, localDescription);
+            model.setRowCount(0);
+            packageType.readAllPackageTypes(jTable1);
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed
-       clear();
+        clear();
     }//GEN-LAST:event_btnClear1ActionPerformed
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
-         setVisible(false);
+        setVisible(false);
         EmployeeDashboard.jPanel26.setBackground(primaryColor);
         EmployeeDashboard.jPanel27.setBackground(primaryColor);
         EmployeeDashboard.jLabel32.setForeground(textPrimaryColor);
     }//GEN-LAST:event_jLabel17MouseClicked
-   
-     private void clear() {
+
+    private void clear() {
         jTextField1.setText("");
         jTextArea1.setText("");
-        
-        
+
     }
+
+    public boolean isEmpty() {
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Title is required", "Warning", 2);
+            return false;
+        }
+        if (jTextArea1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Description is required", "Warning", 2);
+            return false;
+        }
+
+        return true;
+    }
+
     /**
      * @param args the command line arguments
      */
