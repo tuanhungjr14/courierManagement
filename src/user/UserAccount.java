@@ -60,6 +60,7 @@ public class UserAccount extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField1.setEditable(false);
@@ -304,8 +305,10 @@ public class UserAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        setVisible(false);
-        setDefault();
+         setVisible(false);
+        UserDashboard.jPanel1.setBackground(primaryColor);
+        UserDashboard.jPanel3.setBackground(primaryColor);
+        UserDashboard.jLabel1.setForeground(textPrimaryColor);
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
@@ -371,8 +374,7 @@ public class UserAccount extends javax.swing.JFrame {
         UserDashboard.jPanel1.setBackground(primaryColor);
         UserDashboard.jPanel3.setBackground(primaryColor);
         UserDashboard.jPanel1.setForeground(textPrimaryColor);
-        UserDashboard.jLabel2.setVisible(true);
-        UserDashboard.jLabel15.setVisible(false);
+        
     }
 
     /**
@@ -400,6 +402,8 @@ public class UserAccount extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(UserAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

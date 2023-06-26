@@ -26,22 +26,22 @@ public class UserDashboard extends javax.swing.JFrame {
          ImageIcon icon = new ImageIcon("src/icons/AzDeli.png");
         ImageIcon icon1 = new ImageIcon("src/icons/dashboard.png");
         ImageIcon icon2 = new ImageIcon("src/icons/logout.png");
-        ImageIcon icon3 = new ImageIcon("src/icons/delivery_dark.png");
+        
         ImageIcon icon4 = new ImageIcon("src/icons/delivery_light.png");
-        ImageIcon icon5 = new ImageIcon("src/icons/account_dark.png");
+        
         ImageIcon icon6 = new ImageIcon("src/icons/account_light.png");
-        ImageIcon icon7 = new ImageIcon("src/icons/product_dark.png");
+        
         ImageIcon icon8 = new ImageIcon("src/icons/product_light.png");
         
         jLabel19.setIcon(icon);
         jLabel17.setIcon(icon1);
         jLabel20.setIcon(icon2);
-        jLabel14.setIcon(icon3);
-        jLabel33.setIcon(icon4);
-        jLabel2.setIcon(icon5);
-        jLabel15.setIcon(icon6);
-        jLabel25.setIcon(icon7);
-        jLabel26.setIcon(icon8);
+        
+        jLabel14.setIcon(icon4);
+        
+        jLabel2.setIcon(icon6);
+        
+        jLabel25.setIcon(icon8);
         
     }
 
@@ -66,22 +66,18 @@ public class UserDashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
@@ -211,7 +207,6 @@ public class UserDashboard extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 20, 50));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         jPanel5.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 270, 50));
 
@@ -250,7 +245,6 @@ public class UserDashboard extends javax.swing.JFrame {
 
         jPanel13.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 20, 50));
         jPanel13.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-        jPanel13.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         jPanel5.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 270, 50));
 
@@ -276,9 +270,6 @@ public class UserDashboard extends javax.swing.JFrame {
 
         jLabel18.setText("jLabel2");
         jPanel18.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-
-        jLabel21.setText("jLabel2");
-        jPanel18.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         jPanel5.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 270, 50));
 
@@ -311,7 +302,6 @@ public class UserDashboard extends javax.swing.JFrame {
 
         jPanel20.add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 20, 50));
         jPanel20.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-        jPanel20.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         jPanel5.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 270, 50));
 
@@ -365,24 +355,14 @@ public class UserDashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 private void init(){
-        icons();
-    }
-    private void icons(){
-        jLabel14.setVisible(true);
-        jLabel33.setVisible(false);
-        jLabel25.setVisible(true);
-        jLabel26.setVisible(false);
-        jLabel2.setVisible(true);
-        jLabel15.setVisible(false);
-        
         
     }
+    
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
                 jPanel13.setBackground(selectionColor);
                jPanel17.setBackground(sideColor);
                jLabel13.setForeground(textSelectionColor);
-               jLabel14.setVisible(true);
-               jLabel33.setVisible(false);
+               
                TrackOrder trackOrder = new TrackOrder();
                trackOrder.setVisible(true);
                trackOrder.pack();
@@ -396,8 +376,7 @@ private void init(){
         jPanel20.setBackground(selectionColor);
         jPanel21.setBackground(sideColor);
         jLabel22.setForeground(textSelectionColor);
-        jLabel25.setVisible(true);
-        jLabel26.setVisible(false);
+        
         Order order = new Order();
         order.setVisible(true);
         order.pack();
@@ -443,8 +422,7 @@ private void init(){
         jPanel1.setBackground(selectionColor);
         jPanel3.setBackground(sideColor);
         jLabel1.setForeground(textSelectionColor);
-        jLabel2.setVisible(true);
-        jLabel15.setVisible(false);
+        
         UserAccount userAcc = new UserAccount();
         userAcc.setVisible(true);
         userAcc.pack();
@@ -476,6 +454,7 @@ private void init(){
             java.util.logging.Logger.getLogger(UserDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -489,20 +468,16 @@ private void init(){
     public static javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel13;
     public static javax.swing.JLabel jLabel14;
-    public static javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     public static javax.swing.JLabel jLabel19;
     public static javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     public static javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     public static javax.swing.JLabel jLabel25;
-    public static javax.swing.JLabel jLabel26;
-    public static javax.swing.JLabel jLabel33;
     public static javax.swing.JPanel jPanel1;
     public static javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;

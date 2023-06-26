@@ -242,12 +242,11 @@ public class Completedordee extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        setVisible(false);
-        EmployeeDashboard.jPanel20.setBackground(primaryColor);
-        EmployeeDashboard.jPanel21.setBackground(primaryColor);
-        EmployeeDashboard.jLabel22.setForeground(textPrimaryColor);
-        EmployeeDashboard.jLabel25.setVisible(true);
-        EmployeeDashboard.jLabel26.setVisible(false);
+//        setVisible(false);
+//        EmployeeDashboard.jPanel20.setBackground(primaryColor);
+//        EmployeeDashboard.jPanel21.setBackground(primaryColor);
+//        EmployeeDashboard.jLabel22.setForeground(textPrimaryColor);
+    
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

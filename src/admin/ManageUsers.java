@@ -17,7 +17,8 @@ public class ManageUsers extends javax.swing.JFrame {
     UserDao user = new UserDao();
     DefaultTableModel model;
     int rowIndex;
-
+     Color textPrimaryColor = new Color(102,120,138);
+    Color primaryColor = new Color(42,58,73);
     public ManageUsers() {
         initComponents();
         usersTable();
@@ -66,6 +67,7 @@ public class ManageUsers extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField1.setEditable(false);
@@ -183,6 +185,12 @@ public class ManageUsers extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 0, 37, -1));
+
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 290, -1));
 
         jLabel9.setText("show");
@@ -319,7 +327,10 @@ public class ManageUsers extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        this.dispose();
+          setVisible(false);
+        AdminDashboard.jPanel28.setBackground(primaryColor);
+        AdminDashboard.jPanel29.setBackground(primaryColor);
+        AdminDashboard.jLabel37.setForeground(textPrimaryColor);
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
@@ -376,6 +387,10 @@ public class ManageUsers extends javax.swing.JFrame {
         jLabel9.setVisible(false);
         jLabel13.setVisible(true);
     }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     public boolean isEmpty() {
         if (jTextField1.getText().isEmpty()) {

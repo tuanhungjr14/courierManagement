@@ -74,6 +74,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 0));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel3MouseClicked(evt);
@@ -287,7 +288,7 @@ private void init() {
                     ps.setString(2, password);
                     ResultSet rs = ps.executeQuery();
                     if (rs.next()) {
-                        localStorage.saveEmployeeId(employee.getUserId(email));
+                        localStorage.saveEmployeeId(employee.getEmployeeId(email));
                         EmployeeDashboard ed = new EmployeeDashboard();
                         ed.setVisible(true);
                         ed.pack();

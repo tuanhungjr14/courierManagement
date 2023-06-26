@@ -72,6 +72,7 @@ public class AddEmployee extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -330,8 +331,7 @@ public class AddEmployee extends javax.swing.JFrame {
         AdminDashboard.jPanel26.setBackground(primaryColor);
         AdminDashboard.jPanel27.setBackground(primaryColor);
         AdminDashboard.jLabel34.setForeground(textPrimaryColor);
-        AdminDashboard.jLabel35.setVisible(true);
-        AdminDashboard.jLabel36.setVisible(false);
+        
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

@@ -260,12 +260,12 @@ public class Cancelledord extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        setVisible(false);
-        AdminDashboard.jPanel22.setBackground(primaryColor);
-        AdminDashboard.jPanel23.setBackground(primaryColor);
-        AdminDashboard.jLabel27.setForeground(textPrimaryColor);
-        AdminDashboard.jLabel29.setVisible(true);
-        AdminDashboard.jLabel28.setVisible(false);
+//        setVisible(false);
+//        AdminDashboard.jPanel22.setBackground(primaryColor);
+//        AdminDashboard.jPanel23.setBackground(primaryColor);
+//        AdminDashboard.jLabel27.setForeground(textPrimaryColor);
+//        AdminDashboard.jLabel29.setVisible(true);
+//        AdminDashboard.jLabel28.setVisible(false);
         
     }//GEN-LAST:event_jLabel14MouseClicked
 

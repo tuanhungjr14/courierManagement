@@ -5,6 +5,8 @@
 package admin.storage;
 
 import dao.StorageDao;
+import employee.EmployeeDashboard;
+import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,7 +20,8 @@ public class StorageView extends javax.swing.JFrame {
      */
     StorageDao localStorage = new StorageDao();
     int rowIndex;
-
+     Color textPrimaryColor = new Color(102,120,138);
+    Color primaryColor = new Color(42,58,73);
     public StorageView() {
         initComponents();
 
@@ -57,6 +60,7 @@ public class StorageView extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jPanel1MouseDragged(evt);
@@ -206,7 +210,9 @@ public class StorageView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -255,7 +261,7 @@ public class StorageView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4KeyReleased
 
     private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed
-        // TODO add your handling code here:
+        clear();
     }//GEN-LAST:event_btnClear1ActionPerformed
 
     private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
@@ -271,9 +277,17 @@ public class StorageView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCreateMouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        System.exit(0);
+               setVisible(false);
+        EmployeeDashboard.jPanel28.setBackground(primaryColor);
+        EmployeeDashboard.jPanel29.setBackground(primaryColor);
+        EmployeeDashboard.jLabel35.setForeground(textPrimaryColor);
     }//GEN-LAST:event_jLabel14MouseClicked
-
+    private void clear() {
+        jTextField1.setText("");
+        jTextArea1.setText("");
+        
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -299,6 +313,7 @@ public class StorageView extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(StorageView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

@@ -16,6 +16,8 @@ public class ManageEmployees extends javax.swing.JFrame {
     /**
      * Creates new form ManageUsers
      */
+    Color textPrimaryColor = new Color(102,120,138);
+    Color primaryColor = new Color(42,58,73);
     EmployeeDao employee = new EmployeeDao();
     DefaultTableModel model;
     int xx, xy;
@@ -23,7 +25,7 @@ public class ManageEmployees extends javax.swing.JFrame {
 
     public ManageEmployees() {
         initComponents();
-         usersTable();
+         employeeTable();
 //        user.getUsersValue(jTable1, "");
     }
 
@@ -52,19 +54,18 @@ public class ManageEmployees extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel9 = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jPanel1MouseDragged(evt);
@@ -180,14 +181,6 @@ public class ManageEmployees extends javax.swing.JFrame {
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 0, 37, -1));
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 290, -1));
 
-        jLabel9.setText("show");
-        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel9MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, -1, -1));
-
         btnDelete.setBackground(new java.awt.Color(255, 153, 51));
         btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,26 +220,23 @@ public class ManageEmployees extends javax.swing.JFrame {
         jLabel11.setText("------------------------------------------------------------------------------------------------------------------------------------------------");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 720, -1));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Search");
         jLabel12.setToolTipText("");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, 60, 30));
 
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField4KeyReleased(evt);
             }
         });
         jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 300, 30));
-
-        jLabel13.setText("show");
-        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel13MouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -263,8 +253,8 @@ public class ManageEmployees extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usersTable() {
-        employee.getUsersValue(jTable1, "");
+    private void employeeTable() {
+        employee.getEmployeeValue(jTable1, "");
         model = (DefaultTableModel) jTable1.getModel();
         jTable1.setRowHeight(30);
         jTable1.setShowGrid(true);
@@ -302,7 +292,7 @@ public class ManageEmployees extends javax.swing.JFrame {
 
                 employee.update(id, username, email, password, phone, address);
                 jTable1.setModel(new DefaultTableModel(null, new Object[]{"User ID", "Username", "Email", "Password", "Phone", "Address Line"}));
-                employee.getUsersValue(jTable1, "");
+                employee.getEmployeeValue(jTable1, "");
                 clear();
             }
         }
@@ -313,14 +303,11 @@ public class ManageEmployees extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
-        System.exit(0);
+        setVisible(false);
+        AdminDashboard.jPanel20.setBackground(primaryColor);
+        AdminDashboard.jPanel21.setBackground(primaryColor);
+        AdminDashboard.jLabel22.setForeground(textPrimaryColor);
     }//GEN-LAST:event_jLabel14MouseClicked
-
-    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        jPasswordField1.setEchoChar('*');
-        jLabel9.setVisible(true);
-        jLabel13.setVisible(false);
-    }//GEN-LAST:event_jLabel9MouseClicked
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         if (isEmpty()){
@@ -358,14 +345,8 @@ public class ManageEmployees extends javax.swing.JFrame {
 
     private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
         jTable1.setModel(new DefaultTableModel(null, new Object[]{"User ID", "Username", "Email", "Password", "Phone", "Address Line"}));
-        employee.getUsersValue(jTable1, jTextField4.getText());
+        employee.getEmployeeValue(jTable1, jTextField4.getText());
     }//GEN-LAST:event_jTextField4KeyReleased
-
-    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-        jPasswordField1.setEchoChar((char) 0);
-        jLabel9.setVisible(false);
-        jLabel13.setVisible(true);
-    }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
         xx = evt.getX();
@@ -377,6 +358,10 @@ public class ManageEmployees extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x - xx, y - xy);
     }//GEN-LAST:event_jPanel1MouseDragged
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     public boolean isEmpty() {
         if (jTextField1.getText().isEmpty()) {
@@ -485,6 +470,10 @@ public class ManageEmployees extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -501,14 +490,12 @@ public class ManageEmployees extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     public static javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;

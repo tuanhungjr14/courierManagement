@@ -3,7 +3,6 @@ package user;
 import Controller.OrderController;
 import LocalStorage.LocalStorage;
 import dao.DeliveryHistoryDao;
-import dao.OrderDao;
 import dao.PackageTypeDao;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
@@ -13,6 +12,7 @@ import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -77,42 +77,35 @@ public class Order extends javax.swing.JFrame {
         }
     }
 
-//    public boolean isEmpty(){
-//     if(jTextField6.getText().isEmpty()){
-//         JOptionPane.showMessageDialog(this, "Price is required","Warning",2);
-//         return false;
-//     }
-//      if (jTextField5.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Name product is required", "Warning", 2);
-//            return false;
-//        }
-//        
-//        if (jTextField1.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Phone is required", "Warning", 2);
-//            return false;
-//        }
-//        if (jTextField1.getText().length()<10) {
-//            JOptionPane.showMessageDialog(this, "Phone is too short", "Warning", 2);
-//            return false;
-//        }
-//        if (jTextField1.getText().length()>10) {
-//            JOptionPane.showMessageDialog(this, "Phone is too long", "Warning", 2);
-//            return false;
-//        }
-//         if (jTextField8.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Security answer is required", "Warning", 2);
-//            return false;
-//        }
-//        if (jTextField6.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Address is required", "Warning", 2);
-//            return false;
-//        }
-//        if (jComboBox1.getSelectedIndex()==-1) {
-//            JOptionPane.showMessageDialog(this, "Address is required", "Warning", 2);
-//            return false;
-//        }
-// return true;
-// }
+public boolean isEmpty() {
+        if (jTextField2.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Reciver is required", "Warning", 2);
+            return false;
+        }
+
+        if (jTextField3.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Receiver phone is required", "Warning", 2);
+            return false;
+        }
+        if (jTextField3.getText().length() < 10) {
+            JOptionPane.showMessageDialog(this, "Phone is too short", "Warning", 2);
+            return false;
+        }
+        if (jTextField3.getText().length() > 10) {
+            JOptionPane.showMessageDialog(this, "Phone is too long", "Warning", 2);
+            return false;
+        }
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Receiver address  is required", "Warning", 2);
+            return false;
+        }
+        if (jTextField5.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Price answer is required", "Warning", 2);
+            return false;
+        }
+
+        return true;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,6 +164,7 @@ public class Order extends javax.swing.JFrame {
         });
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 0));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(242, 242, 242));
@@ -187,6 +181,12 @@ public class Order extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(242, 242, 242));
         jLabel3.setText("Receiver phone number:");
+
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(242, 242, 242));
@@ -295,6 +295,11 @@ public class Order extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Calculate");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -400,7 +405,7 @@ public class Order extends javax.swing.JFrame {
                                         .addComponent(jComboBox6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton3)))))
@@ -469,7 +474,7 @@ public class Order extends javax.swing.JFrame {
                         .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel10))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -510,7 +515,7 @@ public class Order extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int localUserId = localStorage.readUserId();
+if(isEmpty()){        int localUserId = localStorage.readUserId();
         System.out.println(localUserId);
         OrderController newOrder = new OrderController();
         String weight = (String) jComboBox7.getSelectedItem();
@@ -531,7 +536,7 @@ public class Order extends javax.swing.JFrame {
             DeliveryHistoryDao deliHistory = new DeliveryHistoryDao();
             deliHistory.createDeliveryHistory(1, pickupTime, 1, newOrderId);
             this.dispose();
-        }
+        }}
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -555,8 +560,21 @@ public class Order extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
-        this.dispose();
+         setVisible(false);
+        UserDashboard.jPanel20.setBackground(primaryColor);
+        UserDashboard.jPanel21.setBackground(primaryColor);
+        UserDashboard.jLabel22.setForeground(textPrimaryColor);
     }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+         if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField3KeyTyped
 
     /**
      * @param args the command line arguments
@@ -583,6 +601,7 @@ public class Order extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Order.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
