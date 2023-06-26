@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package admin.PackageType;
 
 import dao.PackageTypeDao;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,6 +38,7 @@ public class PackageTypeViewCreate extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 0));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
@@ -141,19 +139,34 @@ public class PackageTypeViewCreate extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String name = jTextField1.getText();
-        String description = jTextArea1.getText();
-        if(packageType.createPackageType(name, description)){
-            this.dispose();
+        if (isEmpty()) {
+            String name = jTextField1.getText();
+            String description = jTextArea1.getText();
+            if (packageType.createPackageType(name, description)) {
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+    public boolean isEmpty() {
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Title is required", "Warning", 2);
+            return false;
+        }
+        if (jTextArea1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Description is required", "Warning", 2);
+            return false;
+        }
+
+        return true;
+    }
 
     /**
      * @param args the command line arguments

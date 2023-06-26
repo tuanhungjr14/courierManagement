@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package dao;
 
 import connection.MyConnection;
@@ -9,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -118,6 +117,31 @@ public class StorageDao {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+    public void getStorageValue(JTable table, String search) {
+        String sql = "select * from storage where concat(storage_id,storage_name,storage_address) like ? order by storage_id desc";
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, "%" + search + "%");
+            rs = ps.executeQuery();
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            Object[] row;
+            while (rs.next()) {
+                row = new Object[3];
+                row[0] = rs.getInt(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getString(3);
+                
+                
+                
+                model.addRow(row);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeeDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     public static void main(String[] args) {

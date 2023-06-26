@@ -347,10 +347,6 @@ public class SignUp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Address is required", "Warning", 2);
             return false;
         }
-//        if (jComboBox1.getSelectedIndex()==-1) {
-//            JOptionPane.showMessageDialog(this, "Address is required", "Warning", 2);
-//            return false;
-//        }
         return true;
     }
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

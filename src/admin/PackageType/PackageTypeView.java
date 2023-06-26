@@ -5,6 +5,7 @@ package admin.PackageType;
 import dao.PackageTypeDao;
 import employee.EmployeeDashboard;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -225,7 +226,8 @@ public class PackageTypeView extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MouseDragged
 
     private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
-
+jTable1.setModel(new DefaultTableModel(null, new Object[]{"ID","Title","Description"}));
+        packageType.getOrderValue(jTable1, jTextField4.getText());
     }//GEN-LAST:event_jTextField4KeyReleased
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -268,7 +270,7 @@ public class PackageTypeView extends javax.swing.JFrame {
         EmployeeDashboard.jPanel27.setBackground(primaryColor);
         EmployeeDashboard.jLabel32.setForeground(textPrimaryColor);
     }//GEN-LAST:event_jLabel17MouseClicked
-    
+   
      private void clear() {
         jTextField1.setText("");
         jTextArea1.setText("");

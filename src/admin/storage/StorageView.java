@@ -257,7 +257,8 @@ public class StorageView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
-
+        jTable1.setModel(new DefaultTableModel(null, new Object[]{"ID","Storage name","Storage address"}));
+        localStorage.getStorageValue(jTable1, jTextField4.getText());
     }//GEN-LAST:event_jTextField4KeyReleased
 
     private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed

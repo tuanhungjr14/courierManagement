@@ -1,10 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package admin.storage;
 
 import dao.StorageDao;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ADMIN
@@ -179,10 +178,12 @@ public class StorageViewCreate extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String storage_name = jTextField1.getText();
-        String storage_address = jTextArea1.getText();
-        newStorage.createStorage( storage_name, storage_address);
-        this.dispose();
+        if (isEmpty()) {
+            String storage_name = jTextField1.getText();
+            String storage_address = jTextArea1.getText();
+            newStorage.createStorage(storage_name, storage_address);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -195,8 +196,20 @@ public class StorageViewCreate extends javax.swing.JFrame {
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
         this.dispose();
-        
+
     }//GEN-LAST:event_jLabel15MouseClicked
+    public boolean isEmpty() {
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Storage is required", "Warning", 2);
+            return false;
+        }
+        if (jTextArea1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Storage address is required", "Warning", 2);
+            return false;
+        }
+
+        return true;
+    }
 
     /**
      * @param args the command line arguments

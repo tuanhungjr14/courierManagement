@@ -1,25 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package LocalStorage;
 
+import connection.MyConnection;
+import dao.EmployeeDao;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author KhoaTran
  */
+
 public class LocalStorage {
 
     /**
      *
      * @param id
      */
+   
     public void saveUserId(int id) {
 
         try (FileOutputStream fileOut = new FileOutputStream("user.bin"); ObjectOutputStream objectOut = new ObjectOutputStream(fileOut)) {
@@ -78,4 +87,5 @@ public class LocalStorage {
     public static void main(String[] args) {
 
     }
+    
 }

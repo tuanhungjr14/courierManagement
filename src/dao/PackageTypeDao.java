@@ -26,7 +26,7 @@ public class PackageTypeDao {
 
     Connection con = MyConnection.getConnetion();
     PreparedStatement ps;
-    Statement st;
+ 
     ResultSet rs;
 
     public boolean createPackageType(String name, String description) {
@@ -147,6 +147,31 @@ public class PackageTypeDao {
                 JOptionPane.showMessageDialog(null, "Package type with type_id " + typeId + " not found.");
                 ex.printStackTrace();
             }
+        }
+
+    }
+     public void getOrderValue(JTable table, String search) {
+        String sql = "select * from package_type where concat(type_id,type_name,type_description) like ? order by type_id desc";
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, "%" + search + "%");
+            rs = ps.executeQuery();
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            Object[] row;
+            while (rs.next()) {
+                row = new Object[3];
+                row[0] = rs.getInt(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getString(3);
+                
+                
+                
+                model.addRow(row);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeeDao.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

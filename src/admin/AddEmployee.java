@@ -350,7 +350,7 @@ public class AddEmployee extends javax.swing.JFrame {
             if(!employee.isEmailExist(email)){
             if(!employee.isPhoneExist(phone)){
                 employee.insert(id, username, email, password, phone, address);
-                new Login().setVisible(true);
+//                new Login().setVisible(true);
                 this.dispose();
             }else{
             JOptionPane.showMessageDialog(this, "This phone address exists","Warning",2);
