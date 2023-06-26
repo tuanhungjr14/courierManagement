@@ -28,6 +28,7 @@ public class EmployeeDashboard extends javax.swing.JFrame {
     Color sideColor = new Color(64, 194, 150);
     Color textSelectionColor = new Color(255, 255, 255);
     int xx,xy;
+    
     public EmployeeDashboard() {
         initComponents();
         ImageIcon icon = new ImageIcon("src/icons/AzDeli.png");

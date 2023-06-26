@@ -2,6 +2,7 @@ package user;
 
 import dao.UserDao;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,10 +19,15 @@ public class UserAccount extends javax.swing.JFrame {
     UserDao user = new UserDao();
     private int uId;
     String[] value = new String[9];
-
+   
     public UserAccount() {
         initComponents();
         init();
+        ImageIcon icon8 = new ImageIcon("src/icons/visible.png");
+        ImageIcon icon9 = new ImageIcon("src/icons/hide.png");
+        
+        jLabel10.setIcon(icon8);
+        jLabel11.setIcon(icon9);
     }
 
     /**
@@ -180,7 +186,6 @@ public class UserAccount extends javax.swing.JFrame {
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 0, 37, -1));
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 290, -1));
 
-        jLabel10.setText("hide");
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel10MouseClicked(evt);
@@ -188,7 +193,6 @@ public class UserAccount extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, -1, -1));
 
-        jLabel11.setText("hide");
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel11MouseClicked(evt);
@@ -265,10 +269,7 @@ public class UserAccount extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Address is required", "Warning", 2);
             return false;
         }
-//        if (jComboBox1.getSelectedIndex() == -1) {
-//            JOptionPane.showMessageDialog(this, "Address is required", "Warning", 2);
-//            return false;
-//        }
+
         return true;
     }
 
@@ -312,9 +313,9 @@ public class UserAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel14MouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        jPasswordField1.setEchoChar('*');
-        jLabel10.setVisible(true);
-        jLabel11.setVisible(false);
+        jPasswordField1.setEchoChar((char) 0);
+        jLabel10.setVisible(false);
+        jLabel11.setVisible(true);
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
@@ -341,9 +342,10 @@ public class UserAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5KeyTyped
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-        jPasswordField1.setEchoChar((char) 0);
-        jLabel1.setVisible(false);
-        jLabel4.setVisible(true);
+        
+        jPasswordField1.setEchoChar('*');
+        jLabel10.setVisible(true);
+        jLabel11.setVisible(false);
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private boolean check() {
@@ -373,7 +375,7 @@ public class UserAccount extends javax.swing.JFrame {
     private void setDefault() {
         UserDashboard.jPanel1.setBackground(primaryColor);
         UserDashboard.jPanel3.setBackground(primaryColor);
-        UserDashboard.jPanel1.setForeground(textPrimaryColor);
+        UserDashboard.jLabel1.setForeground(textPrimaryColor);
         
     }
 

@@ -29,10 +29,11 @@ public class ForgotPasswords extends javax.swing.JFrame {
     public ForgotPasswords() {
         initComponents();
         init();
-        ImageIcon icon6 = new ImageIcon("src/icons/search.png");
+        ImageIcon icon7 = new ImageIcon("src/icons/search.png");
         ImageIcon icon8 = new ImageIcon("src/icons/visible.png");
         ImageIcon icon9 = new ImageIcon("src/icons/hide.png");
-        jLabel1.setIcon(icon6);
+        
+        jLabel1.setIcon(icon7);
         jLabel8.setIcon(icon8);
         jLabel9.setIcon(icon9);
     }
@@ -323,8 +324,8 @@ jTextField1.setBackground(notEdit);
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
        
         jPasswordField1.setEchoChar((char) 0);
-        jLabel1.setVisible(false);
-        jLabel4.setVisible(true);
+        jLabel8.setVisible(false);
+        jLabel9.setVisible(true);
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
